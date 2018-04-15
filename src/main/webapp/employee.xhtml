@@ -21,10 +21,10 @@
                 <p:column headerText="Description">
                     <h:outputText value="#{employee.salary}" />
                 </p:column>
-                <p:column headerText="Description">
+                <p:column headerText="Department">
                     <h:outputText value="#{employee.department.name}" />
                 </p:column>
-                <p:column headerText="Description">
+                <p:column headerText="Delete">
                     <p:commandButton actionListener="#{employeeBean.actionDelete(employee)}" value="Delete" update="datalist" >
                     </p:commandButton>
                 </p:column>
@@ -41,6 +41,11 @@
                 <p:inputText id="emplSal" value="#{employeeBean.employee.salary}" required="true">
                 </p:inputText>
 
+                <p:outputLabel for="emplDep" rendered="true" value="Department: "></p:outputLabel>
+                <p:selectOneMenu id="emplDep" converter="departmentConverter" value="#{employeeBean.department}">
+                    <f:selectItems value="#{employeeBean.departments}" var="dep" itemLabel="#{dep.name}" itemValue="#{dep}" />
+
+                </p:selectOneMenu>
 
             </h:panelGrid>
 

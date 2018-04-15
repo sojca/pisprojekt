@@ -44,7 +44,7 @@ public class Department {
     }
 
     @Override
-    public String toString() {
-        return this.getClass().toString()+ " "+ String.valueOf(this.getId());
+    public boolean equals(Object obj) {
+        return this.getId() == ((Department)obj).getId();
     }
 }

@@ -2,15 +2,19 @@ package org.pis.bl;
 
 import org.pis.entity.Department;
 import org.pis.entity.Employee;
+import org.pis.services.DepartmentService;
 import org.pis.services.EmployeeService;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@ManagedBean
 @SessionScoped
 public class EmployeeBean implements Serializable {
 
@@ -18,6 +22,10 @@ public class EmployeeBean implements Serializable {
 
     @EJB
     private EmployeeService employeeService;
+
+    @EJB
+    private DepartmentService departmentService;
+
     private Employee employee;
     private Department department;
 
@@ -49,6 +57,14 @@ public class EmployeeBean implements Serializable {
 
     public Department getDepartment() {
         return department;
+    }
+
+    public Department findDepartment(int id) {
+        return (Department) departmentService.find(Department.class, id);
+    }
+
+    public List<Department> getDepartments() {
+        return departmentService.findAll(Department.class);
     }
 
     public void setDepartment(Department department) {

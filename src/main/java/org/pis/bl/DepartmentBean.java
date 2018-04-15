@@ -6,17 +6,20 @@ import org.primefaces.event.SelectEvent;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
-@SessionScoped
+@ManagedBean
+@ViewScoped
 public class DepartmentBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EJB
     private DepartmentService departmentService;
+
     private Department department;
 
     public Department getDepartment() {
@@ -42,7 +45,6 @@ public class DepartmentBean implements Serializable {
 
     public void actionInsertNew(){
         departmentService.merge(department);
-//        PrimeFaces.current().dialog().closeDynamic(null);
     }
 
     public void actionDelete(Department department){
