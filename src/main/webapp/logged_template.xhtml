@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title><ui:insert name="title">Sample Application</ui:insert></title>
+        <h:outputStylesheet library="style" name="style.css" />
+    </h:head>
+
+    <h:body>
+        <div class="container">
+            <div id="header">
+                <ui:insert name="header">
+
+                </ui:insert>
+                <h1 class="nav-header">PIS projekt</h1>
+                <h:form styleClass="nav-menu">
+                <p:menubar>
+
+                    <p:menuitem value="Homepage" outcome="index" />
+                    <p:menuitem value="Department" outcome="department" />
+                    <p:menuitem value="Employee" outcome="employee" />
+
+                    <f:facet name="options">
+                        <p:button type="button" value="Logout" outcome="logout" />
+                    </f:facet>
+                </p:menubar>
+                </h:form>
+                <!--<ul class="nav-menu">-->
+                    <!--<li><p:link value="Homepage"  outcome="index" /></li>-->
+                    <!--<li><p:link value="Department"  outcome="department" /></li>-->
+                <!--</ul>-->
+
+                <div class="nav-bottom"></div>
+
+
+            </div>
+
+            <div id="content">
+                <ui:insert name="content">
+                    Content area.  See comments below this line in the source.
+                    <!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
+                    <!-- <div> -->
+                    <!-- <ui:include src="content.xhtml"/> -->
+                    <!-- </div> -->
+                </ui:insert>
+            </div>
+                <ui:insert name="modal">
+                    <!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
+                    <!-- <div> -->
+                    <!-- <ui:include src="content.xhtml"/> -->
+                    <!-- </div> -->
+                </ui:insert>
+            <div id="footer">
+                <ui:insert name="footer">
+                </ui:insert>
+                &copy; 2018
+            </div>
+        </div>
+    </h:body>
+</html>

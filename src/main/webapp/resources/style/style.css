@@ -1,0 +1,40 @@
+html, body{
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 1200px;
+    margin: 0 auto;
+    max-width: 96%;
+}
+
+.login-panel{
+    margin-top: 60px;
+}
+
+.nav-header{
+    float: left;
+}
+.nav-right{
+    float: right;
+}
+.nav-bottom{
+    clear: both;
+}
+.nav-menu {
+    float: left;
+    margin: 15px;
+}
+.form-center{
+    display: inline-block;
+}
+
+.form-c{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}

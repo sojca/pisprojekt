@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="logged_template.xhtml">
+    <ui:define name="content">
+
+        <h:form id="list">
+
+            <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
+
+            <p:dataTable var="department" value="#{departmentBean.departments}" id="datalist" >
+                <p:column headerText="Name">
+                    <h:outputText value="#{department.name}" />
+                </p:column>
+                <p:column headerText="Description">
+                    <h:outputText value="#{department.description}" />
+                </p:column>
+                <p:column headerText="Description">
+                    <p:commandButton actionListener="#{departmentBean.actionDelete(department)}" value="Delete" update="datalist" >
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+        <h:form id="add">
+            <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
+            <h:panelGrid columns="2">
+                <p:outputLabel for="depName" rendered="true" value="Name: "></p:outputLabel>
+                <p:inputText id="depName" value="#{departmentBean.department.name}" required="true">
+                </p:inputText>
+
+                <p:outputLabel for="depDesc" rendered="true" value="Description: "></p:outputLabel>
+                <p:inputTextarea id="depDesc" value="#{departmentBean.department.description}" required="true">
+                </p:inputTextarea>
+
+
+            </h:panelGrid>
+
+            <p:commandButton actionListener="#{departmentBean.actionInsertNew}" value="Insert department" update="add :list:datalist">
+            </p:commandButton>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>
