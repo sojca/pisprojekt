@@ -14,9 +14,6 @@ import javax.faces.convert.FacesConverter;
 @FacesConverter(value = "departmentConverter")
 public class DepartmentConverter implements Converter {
 
-    @EJB
-    private DepartmentService service;
-
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
         ValueExpression vex =
@@ -25,6 +22,7 @@ public class DepartmentConverter implements Converter {
                                 "#{employeeBean}", EmployeeBean.class);
 
         EmployeeBean emplContext = (EmployeeBean)vex.getValue(facesContext.getELContext());
+
         return emplContext.findDepartment(Integer.parseInt(s));
     }
 
