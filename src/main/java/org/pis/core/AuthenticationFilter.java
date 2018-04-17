@@ -24,21 +24,23 @@ public class AuthenticationFilter implements Filter {
         String contextPath = ((HttpServletRequest) servletRequest).getContextPath();
         String servletPath = ((HttpServletRequest) servletRequest).getServletPath();
 
+        filterChain.doFilter(servletRequest, servletResponse);
 
-        if (servletPath.startsWith("/login.") || servletPath.endsWith(".css.xhtml")|| servletPath.endsWith(".js.xhtml") )
-        {
-            filterChain.doFilter(servletRequest, servletResponse);
-            return;
-        }
-        if (auth != null && auth.isAuthorized())
-        {
-            filterChain.doFilter(servletRequest, servletResponse);
-        }
-        else
-        {
-            HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-            httpResponse.sendRedirect(contextPath + "/login.xhtml");
-        }
+//
+//        if (servletPath.startsWith("/login.") || servletPath.endsWith(".css.xhtml")|| servletPath.endsWith(".js.xhtml") )
+//        {
+//            filterChain.doFilter(servletRequest, servletResponse);
+//            return;
+//        }
+//        if (auth != null && auth.isAuthorized())
+//        {
+//            filterChain.doFilter(servletRequest, servletResponse);
+//        }
+//        else
+//        {
+//            HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+//            httpResponse.sendRedirect(contextPath + "/login.xhtml");
+//        }
     }
 
     @Override

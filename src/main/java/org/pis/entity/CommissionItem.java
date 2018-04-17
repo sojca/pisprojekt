@@ -14,7 +14,7 @@ public class CommissionItem {
     @ManyToOne
     private Commission commission;
 
-    @OneToOne
+    @ManyToOne
     private Activity activity;
 
     @OneToMany(mappedBy = "commissionItem")

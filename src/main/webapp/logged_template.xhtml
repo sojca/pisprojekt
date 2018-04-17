@@ -21,12 +21,12 @@
                 <h:form styleClass="nav-menu">
                 <p:menubar>
 
-                    <p:menuitem value="Homepage" outcome="index" />
-                    <p:menuitem value="Department" outcome="department" />
-                    <p:menuitem value="Employee" outcome="employee" />
+                    <p:menuitem value="Homepage" outcome="/index" />
+                    <p:menuitem value="Department" outcome="/departments/departments" />
+                    <p:menuitem value="Employee" outcome="/employees/employees" />
 
                     <f:facet name="options">
-                        <p:button type="button" value="Logout" outcome="logout" />
+                        <p:button type="button" value="Logout" outcome="/logout" />
                     </f:facet>
                 </p:menubar>
                 </h:form>

@@ -1,6 +1,7 @@
 package org.pis.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Activity {
@@ -12,8 +13,49 @@ public class Activity {
     @ManyToOne
     private Department department;
 
-    @OneToOne(mappedBy = "activity")
-    private CommissionItem commissionItem;
+    private String description;
+
+    private int numberEmployees;
+
+    private float unitRequired;
+
+    private float pricePerUnit;
+
+    @OneToMany(mappedBy = "activity")
+    private List<CommissionItem> commissionItem;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String desciption) {
+        this.description = desciption;
+    }
+
+    public int getNumberEmployees() {
+        return numberEmployees;
+    }
+
+    public void setNumberEmployees(int numberEmployees) {
+        this.numberEmployees = numberEmployees;
+    }
+
+    public float getUnitRequired() {
+        return unitRequired;
+    }
+
+    public void setUnitRequired(float unitRequired) {
+        this.unitRequired = unitRequired;
+    }
+
+    public float getPricePerUnit() {
+        return pricePerUnit;
+    }
+
+    public void setPricePerUnit(float pricePerUnit) {
+        this.pricePerUnit = pricePerUnit;
+    }
+
 
     public int getId() {
         return id;

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../logged_template.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <p:commandButton action="#{departmentDetailBean.actionOpenEdit()}" value="Edit department">
+                <f:param name="action" value="edit" />
+            </p:commandButton>
+            <p:button outcome="departments" value="Back to departments">
+            </p:button>
+        </h:form>
+        <div>
+            <div><h:outputText value="#{departmentBean.department.name}" /></div>
+            <div><h:outputText value="#{departmentBean.department.description}" /></div>
+        </div>
+        <h:form id="list">
+            <p:dataTable var="act" value="#{departmentDetailBean.activities}" id="datalist" >
+                <p:column headerText="Desc">
+                    <h:outputText value="#{act.description}" />
+                </p:column>
+                <p:column headerText="No of Employees">
+                    <h:outputText value="#{act.numberEmployees}" />
+                </p:column>
+                <p:column headerText="Price per unit">
+                    <h:outputText value="#{act.pricePerUnit}" />
+                </p:column>
+                <p:column headerText="Delete">
+                    <p:commandButton actionListener="#{departmentDetailBean.openDeleteDialog(act)}" value="Delete">
+                        <p:ajax event="dialogReturn" listener="#{departmentDetailBean.onDelete}" update="datalist" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>
+
+
+        <h:form>
+            <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
+            <h:panelGrid columns="2">
+                <p:outputLabel for="actName"  value="Name: "></p:outputLabel>
+                <p:inputText id="actName" value="#{departmentDetailBean.activity.description}" required="true">
+                </p:inputText>
+
+                <p:outputLabel for="actEmpl"  value="Number Of Employees: "></p:outputLabel>
+                <p:inputText id="actEmpl" value="#{departmentDetailBean.activity.numberEmployees}" required="true">
+                </p:inputText>
+
+                <p:outputLabel for="actPrice"  value="Price: "></p:outputLabel>
+                <p:inputText id="actPrice" value="#{departmentDetailBean.activity.pricePerUnit}" required="false">
+                </p:inputText>
+            </h:panelGrid>
+
+            <p:commandButton action="#{departmentDetailBean.actionAddActivity()}" value="Insert activity" update=":list:datalist">
+            </p:commandButton>
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>
+</html>

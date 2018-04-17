@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="logged_template.xhtml">
+<ui:composition template="../logged_template.xhtml">
     <ui:define name="content">
 
         <h:form id="list">
@@ -15,6 +15,10 @@
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
             <p:dataTable var="department" value="#{departmentBean.departments}" id="datalist" >
+                <p:column headerText="Operations">
+                    <p:commandButton action="#{departmentBean.actionOpenDetail(department)}" value="Open detail" icon="ui-icon-extlink">
+                    </p:commandButton>
+                </p:column>
                 <p:column headerText="Name">
                     <h:outputText value="#{department.name}" />
                 </p:column>
@@ -22,29 +26,24 @@
                     <h:outputText value="#{department.description}" />
                 </p:column>
                 <p:column headerText="Delete">
-                    <p:commandButton actionListener="#{departmentBean.actionDelete(department)}" value="Delete" update="datalist" >
+                    <p:commandButton actionListener="#{departmentBean.openDeleteDialog(department)}" value="Delete">
+                        <p:ajax event="dialogReturn" listener="#{departmentBean.onDelete}" update="datalist" />
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
         </h:form>
 
         <h:form id="add">
-            <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
-            <h:panelGrid columns="2">
-                <p:outputLabel for="depName" rendered="true" value="Name: "></p:outputLabel>
-                <p:inputText id="depName" value="#{departmentBean.department.name}" required="true">
-                </p:inputText>
-
-                <p:outputLabel for="depDesc" rendered="true" value="Description: "></p:outputLabel>
-                <p:inputTextarea id="depDesc" value="#{departmentBean.department.description}" required="true">
-                </p:inputTextarea>
-
-
-            </h:panelGrid>
-
-            <p:commandButton actionListener="#{departmentBean.actionInsertNew}" value="Insert department" update="add :list:datalist">
+            <p:commandButton action="#{departmentBean.actionNew()}" value="Insert department">
             </p:commandButton>
         </h:form>
+
+        <h:form>
+            <p:commandButton value="Select Car" icon="ui-icon-extlink" actionListener="#{departmentBean.chooseCar}">
+                <p:ajax event="dialogReturn" listener="#{departmentBean.onCarChosen}" />
+            </p:commandButton>
+        </h:form>
+
 
     </ui:define>
 </ui:composition>

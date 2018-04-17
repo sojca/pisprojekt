@@ -1,6 +1,6 @@
 package org.pis.bl.converters;
 
-import org.pis.bl.EmployeeBean;
+import org.pis.bl.employee.EmployeeBean;
 import org.pis.entity.Department;
 import org.pis.services.DepartmentService;
 
@@ -10,7 +10,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import java.util.List;
 
 @FacesConverter(value = "departmentConverter")
 public class DepartmentConverter implements Converter {
