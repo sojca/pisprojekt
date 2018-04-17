@@ -11,6 +11,7 @@ public class CommissionItem {
     private int id;
     private int sequenceNo;
 
+
     @ManyToOne
     private Commission commission;
 

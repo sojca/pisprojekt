@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../logged_template.xhtml">
+    <ui:define name="content">
+
+        <h:form id="list">
+
+            <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
+
+            <p:dataTable var="company" value="#{companyBean.companies}" id="datalist" >
+                <p:column headerText="Operations">
+                    <p:commandButton action="#{companyBean.actionOpenDetail(company)}" value="Open detail" icon="ui-icon-extlink">
+                    </p:commandButton>
+                </p:column>
+                <p:column headerText="Company Name">
+                    <h:outputText value="#{company.name}" />
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{company.email}" />
+                </p:column>
+                <p:column headerText="Telephone number">
+                    <h:outputText value="#{company.telephoneNumber}" />
+                </p:column>
+                <p:column headerText="Delete">
+                    <p:commandButton actionListener="#{companyBean.openDeleteDialog(company)}" value="Delete">
+                        <p:ajax event="dialogReturn" listener="#{companyBean.onDelete}" update="datalist" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+        <h:form id="add">
+            <p:commandButton action="#{companyBean.actionNew()}" value="Insert company">
+            </p:commandButton>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

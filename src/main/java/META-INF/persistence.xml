@@ -8,7 +8,6 @@
 
         <class>org.pis.entity.Employee</class>
         <class>org.pis.entity.Company</class>
-        <class>org.pis.entity.CompanyAddress</class>
         <class>org.pis.entity.Commission</class>
         <class>org.pis.entity.CommissionItem</class>
         <class>org.pis.entity.Department</class>
