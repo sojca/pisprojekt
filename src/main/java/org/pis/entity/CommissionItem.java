@@ -9,8 +9,7 @@ public class CommissionItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int sequenceNo;
-
+    private int amount;
 
     @ManyToOne
     private Commission commission;
@@ -29,12 +28,12 @@ public class CommissionItem {
         this.id = id;
     }
 
-    public int getSequenceNo() {
-        return sequenceNo;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setSequenceNo(int sequenceNo) {
-        this.sequenceNo = sequenceNo;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public Commission getCommission() {
@@ -43,5 +42,13 @@ public class CommissionItem {
 
     public void setCommission(Commission commission) {
         this.commission = commission;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    public Activity getActivity() {
+        return activity;
     }
 }
