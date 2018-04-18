@@ -19,7 +19,7 @@
                     <p:commandButton action="#{companyBean.actionOpenDetail(company)}" value="Open detail" icon="ui-icon-extlink">
                     </p:commandButton>
                 </p:column>
-                <p:column headerText="Company Name">
+                <p:column headerText="Name">
                     <h:outputText value="#{company.name}" />
                 </p:column>
                 <p:column headerText="Email">
@@ -37,7 +37,7 @@
         </h:form>
 
         <h:form id="add">
-            <p:commandButton action="#{companyBean.actionNew()}" value="Insert company">
+            <p:commandButton action="#{companyBean.actionNew()}" value="Insert customer">
             </p:commandButton>
         </h:form>
 

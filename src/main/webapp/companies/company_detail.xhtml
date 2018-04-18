@@ -10,15 +10,22 @@
 <ui:composition template="../logged_template.xhtml">
     <ui:define name="content">
         <h:form>
-            <p:commandButton action="#{companyDetailBean.actionOpenEdit}" value="Edit company">
+            <p:commandButton action="#{companyDetailBean.actionOpenEdit}" value="Edit customer">
                 <f:param name="action" value="edit" />
             </p:commandButton>
-            <p:button outcome="companies" value="Back to companies">
+            <p:button outcome="companies" value="Back to customers">
             </p:button>
         </h:form>
         <div>
             <div><h:outputText value="#{companyDetailBean.company.name}" /></div>
+            <div><h:outputText value="#{companyDetailBean.company.ico}" /></div>
+            <div><h:outputText value="#{companyDetailBean.company.addressLine1}" /></div>
+            <div><h:outputText value="#{companyDetailBean.company.addressLine2}" /></div>
+            <div><h:outputText value="#{companyDetailBean.company.zipCode}" /></div>
+            <div><h:outputText value="#{companyDetailBean.company.city}" /></div>
+            <div><h:outputText value="#{companyDetailBean.company.state}" /></div>
             <div><h:outputText value="#{companyDetailBean.company.email}" /></div>
+            <div><h:outputText value="#{companyDetailBean.company.telephoneNumber}" /></div>
         </div>
 
 
