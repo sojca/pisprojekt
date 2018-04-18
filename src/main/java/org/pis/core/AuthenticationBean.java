@@ -1,18 +1,31 @@
 package org.pis.core;
 
 
-import javax.enterprise.context.SessionScoped;
+import org.pis.entity.Employee;
+import org.pis.services.EmployeeService;
+
+import javax.ejb.EJB;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.persistence.NoResultException;
 import java.io.Serializable;
 
 
 @Named
-@SessionScoped
+@ApplicationScoped
 public class AuthenticationBean implements Serializable
 {
     private static final long serialVersionUID = 1L;
+
+    @EJB
+    private EmployeeService employeeService;
+
+    @EJB
+    private EmployeeUtils employeeUtils;
+
+    private Employee employee;
 
     private boolean authorized;
     private String login;
@@ -51,6 +64,14 @@ public class AuthenticationBean implements Serializable
         this.password = password;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
     public String actionLogout()
     {
         authorized = false;
@@ -59,15 +80,23 @@ public class AuthenticationBean implements Serializable
 
     public String actionLogin()
     {
-        if (login.equals("admin") && password.equals("admin"))
-        {
-            authorized = true;
-            return "logged";
+        employeeService.findAll(Employee.class);
+        try{
+            Employee e = employeeService.getUserByLogin(login);
+                if(employeeUtils.Hash(password).equals(e.getPassword())){
+                    authorized = true;
+                    employee = e;
+
+                    return "logged";
+                }
         }
-        else
-        {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error","Invalid login"));
-            return "login_failed";
+        catch (NoResultException e){
         }
+        catch (Exception e){
+
+        }
+
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error","Invalid login"));
+        return "login_failed";
     }
 }

@@ -15,10 +15,13 @@
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
             <p:dataTable value="#{employeeBean.employees}" var="employee" id="datalist" >
-                <p:column headerText="Name">
-                    <h:outputText value="#{employee.name}" />
+                <p:column headerText="Surname">
+                    <h:outputText value="#{employee.surname}" />
                 </p:column>
-                <p:column headerText="Description">
+                <p:column headerText="First name">
+                    <h:outputText value="#{employee.firstName}" />
+                </p:column>
+                <p:column headerText="Salary">
                     <h:outputText value="#{employee.salary}" />
                 </p:column>
                 <p:column headerText="Department">
@@ -33,13 +36,25 @@
         <h:form id="add">
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
             <h:panelGrid columns="2">
-                <p:outputLabel for="emplName" rendered="true" value="Name: "></p:outputLabel>
-                <p:inputText id="emplName" value="#{employeeBean.employee.name}" required="true">
+
+                <p:outputLabel for="emplFirstName" rendered="true" value="First name: "></p:outputLabel>
+                <p:inputText id="emplFirstName" value="#{employeeBean.employee.firstName}" required="true">
+                </p:inputText>
+                <p:outputLabel for="emplSurName" rendered="true" value="Surname: "></p:outputLabel>
+                <p:inputText id="emplSurName" value="#{employeeBean.employee.surname}" required="true">
                 </p:inputText>
 
-                <p:outputLabel for="emplSal" rendered="true" value="Salary: "></p:outputLabel>
+                <p:outputLabel for="emplSal" rendered="true" value="Salary (hour): "></p:outputLabel>
                 <p:inputText id="emplSal" value="#{employeeBean.employee.salary}" required="true">
                 </p:inputText>
+
+
+                <p:outputLabel for="emplRole" rendered="true" value="Role: "></p:outputLabel>
+                <p:selectOneMenu id="emplRole" value="#{employeeBean.employee.role}">
+                    <f:selectItems value="#{rolesBean.roles}" var="role" itemLabel="#{role.label}" itemValue="#{role}" />
+
+                </p:selectOneMenu>
+
 
                 <p:outputLabel for="emplDep" rendered="true" value="Department: "></p:outputLabel>
                 <p:selectOneMenu id="emplDep" converter="departmentConverter" value="#{employeeBean.department}">

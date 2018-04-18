@@ -1,5 +1,7 @@
 package org.pis.entity;
 
+import org.pis.core.Roles;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,7 +11,13 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name;
+    private String firstName;
+    private String surname;
+    private String login;
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Roles role;
     private double salary;
 
     @ManyToOne
@@ -38,12 +46,44 @@ public class Employee {
         this.department = department;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
     }
 
     public double getSalary() {

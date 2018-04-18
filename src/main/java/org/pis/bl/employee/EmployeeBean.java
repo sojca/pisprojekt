@@ -1,5 +1,6 @@
 package org.pis.bl.employee;
 
+import org.pis.core.EmployeeUtils;
 import org.pis.entity.Department;
 import org.pis.entity.Employee;
 import org.pis.services.DepartmentService;
@@ -24,6 +25,9 @@ public class EmployeeBean implements Serializable {
 
     @EJB
     private DepartmentService departmentService;
+
+    @EJB
+    private EmployeeUtils employeeUtils;
 
     private Employee employee;
     private Department department;
@@ -65,6 +69,8 @@ public class EmployeeBean implements Serializable {
 
     public void actionInsertNew(){
         employee.setDepartment(department);
+        employeeUtils.createCredentials(employee);
+
         employeeService.merge(employee);
     }
 
