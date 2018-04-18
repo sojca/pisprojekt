@@ -12,19 +12,37 @@
 
         <h:form id="list">
 
+                <h:outputText style="font-size:16px;" value="Customer: #{commissionItemBean.commission.company.name}  "/>
+                <h:outputText style="font-size:16px;" value="ID: #{commissionItemBean.commission.company.id} "/>
+
+
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
-            <p:dataTable value="#{commissionItemBean.commissionItems}" var="ci" id="datalist" >
+            <p:dataTable value="#{commissionItemBean.commissionItems}" var="ci" sortBy="#{ci.activity.description}" id="datalist">
                 <p:column headerText="Name">
-                    <h:outputText value="#{ci.activity.description}" />
+                    <h:outputText value="#{ci.activity.description}"/>
                 </p:column>
                 <p:column headerText="Amount">
-                    <h:outputText value="#{ci.amount}" />
+                    <h:outputText value="#{ci.amount}"/>
+                </p:column>
+                <p:column headerText="Price">
+                    <h:outputText value="#{ci.amount * ci.activity.pricePerUnit}"/>
                 </p:column>
                 <p:column headerText="Delete">
-                    <p:commandButton actionListener="#{commissionItemBean.actionDelete(ci)}" value="Delete" update="datalist" >
+                    <p:commandButton actionListener="#{commissionItemBean.openDeleteDialog(ci)}" value="Delete">
+                        <p:ajax event="dialogReturn" listener="#{commissionItemBean.onDelete}" update="datalist"/>
                     </p:commandButton>
                 </p:column>
+                <p:summaryRow>
+                    <p:column >
+                        <h:outputText value="Total:"/>
+                    </p:column>
+                    <p:column colspan="3" style="text-align:left">
+                        <h:outputText value="#{commissionItemBean.sum}">
+                            <f:convertNumber type="currency" currencySymbol="$"/>
+                        </h:outputText>
+                    </p:column>
+                </p:summaryRow>
             </p:dataTable>
         </h:form>
         <h:form id="add">
@@ -36,11 +54,13 @@
 
                 <p:outputLabel for="ciActivity" rendered="true" value="Activity: "></p:outputLabel>
                 <p:selectOneMenu id="ciActivity" converter="activityConverter" value="#{commissionItemBean.activity}">
-                    <f:selectItems value="#{commissionItemBean.activities}" var="act" itemLabel="#{act.description}" itemValue="#{act}" />
+                    <f:selectItems value="#{commissionItemBean.activities}" var="act" itemLabel="#{act.description}"
+                                   itemValue="#{act}"/>
                 </p:selectOneMenu>
 
             </h:panelGrid>
-            <p:commandButton action="#{commissionItemBean.actionInsertNew}" value="Insert commission item" update=":list:datalist">
+            <p:commandButton action="#{commissionItemBean.actionInsertNew}" value="Insert commission item"
+                             update=":list:datalist">
             </p:commandButton>
         </h:form>
 
