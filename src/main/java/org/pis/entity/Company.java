@@ -23,6 +23,11 @@ public class Company {
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     private List<Commission> commissions;
 
+    @Override
+    public boolean equals(Object obj) {
+        return this.getId() == ((Company)obj).getId();
+    }
+
     public Company() {
         super();
     }

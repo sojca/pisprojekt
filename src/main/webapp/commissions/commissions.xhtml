@@ -21,6 +21,9 @@
                 <p:column headerText="Status">
                     <h:outputText value="#{commission.status}" />
                 </p:column>
+                <p:column headerText="Company">
+                    <h:outputText value="#{commission.company.name}" />
+                </p:column>
                 <p:column headerText="Delete">
                     <p:commandButton actionListener="#{commissionBean.openDeleteDialog(commission)}" value="Delete">
                         <p:ajax event="dialogReturn" listener="#{commissionBean.onDelete}" update="datalist" />

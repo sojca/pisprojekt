@@ -13,14 +13,19 @@
 
         <h:form>
         <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
-        <h:panelGrid columns="1">
+        <h:panelGrid columns="2">
             <p:outputLabel for="comStat" value="Status: "></p:outputLabel>
             <p:inputTextarea id="comStat" value="#{commissionBean.commission.status}" required="true">
             </p:inputTextarea>
+
+            <p:outputLabel for="commComp" rendered="true" value="Company: "></p:outputLabel>
+            <p:selectOneMenu id="commComp" converter="companyConverter" value="#{commissionBean.company}">
+                <f:selectItems value="#{commissionBean.companies}" var="comp" itemLabel="#{comp.name}" itemValue="#{comp}" />
+            </p:selectOneMenu>
+
         </h:panelGrid>
 
-            <p:commandButton name="insert" action="#{commissionBean.actionInsert()}"
-                             value="${(param['action'] != 'edit')?'Insert':'Edit'} commission">
+            <p:commandButton action="#{commissionBean.actionInsertNew}" value="Insert commission">
             </p:commandButton>
 </h:form>
     </ui:define>

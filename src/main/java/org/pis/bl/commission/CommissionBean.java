@@ -3,8 +3,10 @@ package org.pis.bl.commission;
 
 import org.pis.bl.ViewPage;
 import org.pis.entity.Commission;
+import org.pis.entity.Company;
 import org.pis.entity.Department;
 import org.pis.services.CommissionService;
+import org.pis.services.CompanyService;
 import org.pis.services.DepartmentService;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
@@ -29,8 +31,20 @@ public class CommissionBean extends ViewPage<Commission> implements Serializable
     @EJB
     private CommissionService commissionService;
 
+    @EJB
+    private CompanyService companyService;
+
+    private Company company;
     private Commission commission;
-    private List<Commission> commissions;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
 
     public  CommissionBean()
     {
@@ -46,15 +60,13 @@ public class CommissionBean extends ViewPage<Commission> implements Serializable
         return commission;
     }
 
-    /*
-    private void loadCommissions(){
-        commissions = commissionService.findAll(Commission.class);
-    }
-    */
-
     @PostConstruct
     public void init(){
 //        loadCommisions();
+    }
+
+    public Company findCompany (int id) {
+        return companyService.find(Company.class, id);
     }
 
     public List<Commission> getCommissions()
@@ -62,17 +74,22 @@ public class CommissionBean extends ViewPage<Commission> implements Serializable
         return commissionService.findAll(Commission.class);
     }
 
+    public List<Company> getCompanies()
+    {
+        return companyService.findAll(Company.class);
+    }
+
     public String actionNew(){
         commission = new Commission();
         return "commission_insert_edit";
     }
 
-    public String actionInsert(){
+    public String actionInsertNew(){
+        commission.setCompany(company);
         commissionService.merge(commission);
-//        loadDepartments();
-
         return "commissions";
     }
+
 
     public String actionEdit(Commission commission){
         setCommission(commission);
