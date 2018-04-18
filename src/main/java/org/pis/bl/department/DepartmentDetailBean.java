@@ -10,12 +10,13 @@ import org.primefaces.event.SelectEvent;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class DepartmentDetailBean  extends ViewPage<Activity> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,6 +57,12 @@ public class DepartmentDetailBean  extends ViewPage<Activity> implements Seriali
         return "department_detail";
     }
 
+    public String actionInsertActivity(){
+        this.activity = activityService.merge(activity);
+
+        return "department_detail";
+    }
+
 
     public List<Activity> getActivities() {
 
@@ -72,6 +79,11 @@ public class DepartmentDetailBean  extends ViewPage<Activity> implements Seriali
     public String actionEdit(){
         //departmentService.merge(departmentBean.getDepartment());
         return "department_detail";
+    }
+
+    public String actionOpenEditActivity(Activity activity){
+        setActivity(activity);
+        return "activity_edit";
     }
 
     public void onDelete(SelectEvent event) {

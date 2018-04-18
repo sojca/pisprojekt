@@ -71,7 +71,7 @@ public class DepartmentBean extends ViewPage<Department> implements Serializable
         this.department = departmentService.merge(department);
 //        loadDepartments();
 
-        return "departments";
+        return "department_detail";
     }
 
     public String actionEdit(Department department){

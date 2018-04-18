@@ -22,6 +22,11 @@
         </div>
         <h:form id="list">
             <p:dataTable var="act" value="#{departmentDetailBean.activities}" id="datalist" >
+                <p:column headerText="Operations">
+                    <p:commandButton action="#{departmentDetailBean.actionOpenEditActivity(act)}" value="Edit Activity" icon="ui-icon-extlink">
+                        <f:param name="action" value="edit" />
+                    </p:commandButton>
+                </p:column>
                 <p:column headerText="Desc">
                     <h:outputText value="#{act.description}" />
                 </p:column>
