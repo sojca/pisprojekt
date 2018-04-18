@@ -10,6 +10,7 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private String name;
 
     @ManyToOne
     private Department department;
@@ -18,12 +19,26 @@ public class Activity {
 
     private int numberEmployees;
 
-    private float unitRequired;
+    private int duration;
 
     private float pricePerUnit;
 
     @OneToMany(mappedBy = "activity")
+
     private List<CommissionItem> commissionItem;
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getId() == ((Activity)obj).getId();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getDescription() {
         return description;
@@ -41,14 +56,6 @@ public class Activity {
         this.numberEmployees = numberEmployees;
     }
 
-    public float getUnitRequired() {
-        return unitRequired;
-    }
-
-    public void setUnitRequired(float unitRequired) {
-        this.unitRequired = unitRequired;
-    }
-
     public float getPricePerUnit() {
         return pricePerUnit;
     }
@@ -57,6 +64,12 @@ public class Activity {
         this.pricePerUnit = pricePerUnit;
     }
 
+    public float getDuration() {
+        return duration;
+    }
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
     public int getId() {
         return id;

@@ -16,6 +16,11 @@ public class Commission {
     @ManyToOne
     public Company company;
 
+    @Override
+    public boolean equals(Object obj) {
+        return this.getId() == ((Commission)obj).getId();
+    }
+
     public int getId() {
         return id;
     }
