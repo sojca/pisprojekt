@@ -38,7 +38,7 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-        <h:outputText style="font-size:16px;" value="Total: #{commissionItemBean.sum}"/>
+        <h:outputText style="font-size:16px;" value="Total: #{commissionItemBean.sum}" id="sum"/>
         <h:form id="add">
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
             <h:panelGrid columns="2">
@@ -54,7 +54,7 @@
 
             </h:panelGrid>
             <p:commandButton action="#{commissionItemBean.actionInsertNew}" value="Insert commission item"
-                             update=":list:datalist">
+                             update=":list:datalist :sum">
             </p:commandButton>
         </h:form>
 
