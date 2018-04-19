@@ -17,9 +17,7 @@ public class Activity {
 
     private String description;
 
-    private int numberEmployees;
-
-    private int duration;
+    private double duration = 1.0;
 
     private float pricePerUnit;
 
@@ -48,14 +46,6 @@ public class Activity {
         this.description = desciption;
     }
 
-    public int getNumberEmployees() {
-        return numberEmployees;
-    }
-
-    public void setNumberEmployees(int numberEmployees) {
-        this.numberEmployees = numberEmployees;
-    }
-
     public float getPricePerUnit() {
         return pricePerUnit;
     }
@@ -64,10 +54,10 @@ public class Activity {
         this.pricePerUnit = pricePerUnit;
     }
 
-    public float getDuration() {
+    public double getDuration() {
         return duration;
     }
-    public void setDuration(int duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
     }
 

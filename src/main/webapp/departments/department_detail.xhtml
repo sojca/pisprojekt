@@ -30,8 +30,8 @@
                 <p:column headerText="Desc">
                     <h:outputText value="#{act.description}" />
                 </p:column>
-                <p:column headerText="No of Employees">
-                    <h:outputText value="#{act.numberEmployees}" />
+                <p:column headerText="Duration(hours)">
+                    <h:outputText value="#{act.duration}" />
                 </p:column>
                 <p:column headerText="Price per unit">
                     <h:outputText value="#{act.pricePerUnit}" />
@@ -53,8 +53,8 @@
                 <p:inputText id="actName" value="#{departmentDetailBean.activity.description}" required="true">
                 </p:inputText>
 
-                <p:outputLabel for="actEmpl"  value="Number Of Employees: "></p:outputLabel>
-                <p:inputText id="actEmpl" value="#{departmentDetailBean.activity.numberEmployees}" required="true">
+                <p:outputLabel for="actEmpl"  value="Duration (hours)"></p:outputLabel>
+                <p:inputText id="actEmpl" value="#{departmentDetailBean.activity.duration}" required="true">
                 </p:inputText>
 
                 <p:outputLabel for="actPrice"  value="Price: "></p:outputLabel>
