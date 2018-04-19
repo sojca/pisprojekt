@@ -10,6 +10,7 @@ public class Commission {
     public int id;
     public int status;
 
+
     @OneToMany(mappedBy = "commission", fetch = FetchType.EAGER, orphanRemoval = true)
     public List<CommissionItem> CommissionItems;
 
@@ -52,4 +53,5 @@ public class Commission {
     public void setCompany(Company company) {
         this.company = company;
     }
+
 }

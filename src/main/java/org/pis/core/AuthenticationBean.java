@@ -75,6 +75,7 @@ public class AuthenticationBean implements Serializable
     public String actionLogout()
     {
         authorized = false;
+        employee = null;
         return "logout";
     }
 

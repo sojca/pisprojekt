@@ -24,7 +24,7 @@
                 <p:column headerText="Company">
                     <h:outputText value="#{commission.company.name}" />
                 </p:column>
-                <p:column headerText="Activities">
+                <p:column headerText="Commisission items">
                     <p:commandButton action="#{commissionItemBean.actionOpenDetail(commission)}" value="Open detail" icon="ui-icon-extlink">
                     </p:commandButton>
                 </p:column>
@@ -38,12 +38,6 @@
 
         <h:form id="add">
             <p:commandButton action="#{commissionBean.actionNew()}" value="Insert commision">
-            </p:commandButton>
-        </h:form>
-
-        <h:form>
-            <p:commandButton value="Select Car" icon="ui-icon-extlink" actionListener="#{departmentBean.chooseCar}">
-                <p:ajax event="dialogReturn" listener="#{departmentBean.onCarChosen}" />
             </p:commandButton>
         </h:form>
 

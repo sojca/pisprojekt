@@ -67,11 +67,18 @@ public class EmployeeBean implements Serializable {
         this.department = department;
     }
 
-    public void actionInsertNew(){
+    public String actionInsertNew(){
         employee.setDepartment(department);
         employeeUtils.createCredentials(employee);
 
         employeeService.merge(employee);
+
+        return "employees";
+    }
+
+    public String actionInsert() {
+        employee = new Employee();
+        return "employee_insert_edit";
     }
 
     public void actionDelete(Employee employee){
