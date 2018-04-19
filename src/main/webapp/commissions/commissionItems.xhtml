@@ -31,6 +31,10 @@
                 <p:column headerText="Price">
                     <h:outputText value="#{ci.amount * ci.activity.pricePerUnit}"/>
                 </p:column>
+                <p:column headerText="Assign employee">
+                    <p:commandButton action="#{commissionItemBean.actionOpenDetail(commission)}" value="Open detail" icon="ui-icon-extlink">
+                    </p:commandButton>
+                </p:column>
                 <p:column headerText="Delete">
                     <p:commandButton actionListener="#{commissionItemBean.openDeleteDialog(ci)}" value="Delete">
                         <p:ajax event="dialogReturn" listener="#{commissionItemBean.onDelete}" update="datalist"/>
