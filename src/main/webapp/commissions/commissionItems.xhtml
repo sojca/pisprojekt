@@ -32,7 +32,7 @@
                     <h:outputText value="#{ci.amount * ci.activity.pricePerUnit}"/>
                 </p:column>
                 <p:column headerText="Assign employee">
-                    <p:commandButton action="#{commissionItemBean.actionOpenDetail(commission)}" value="Open detail" icon="ui-icon-extlink">
+                    <p:commandButton action="#{commissionItemEmployeeBean.actionOpenDetail(ci)}" value="Employees" icon="ui-icon-extlink">
                     </p:commandButton>
                 </p:column>
                 <p:column headerText="Delete">

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../logged_template.xhtml">
+    <ui:define name="content">
+
+        <h:form id="list">
+
+            <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
+
+            <p:dataTable value="#{commissionItemEmployeeBean.commissionItemEmployees}" var="emp" sortBy="#{ci.activity.description}" id="datalist">
+                <p:column headerText="Name">
+                    <h:outputText value="#{emp.employee.firstName + ' ' + emp.employee.surname}"/>
+                </p:column>
+                <p:column headerText="Hours spend">
+                    <h:outputText value="#{emp.realHour}"/>
+                </p:column>
+                <p:column headerText="Employee costs">
+                    <h:outputText value="#{commissionItemEmployeeBean.calculateCommissionItemExpenses(emp)}"/>
+                </p:column>
+                <p:column headerText="Delete">
+                    <p:commandButton actionListener="#{commissionItemEmployeeBean.openDeleteDialog(ci)}" value="Delete">
+                        <p:ajax event="dialogReturn" listener="#{commissionItemEmployeeBean.onDelete}" update="datalist"/>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <h:outputText style="font-size:16px;" value="Total: #{commissionItemBean.sum}" id="sum"/>
+        <h:form id="add">
+            <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
+            <h:panelGrid columns="1">
+                <p:outputLabel for="emp" rendered="true" value="Employee: "></p:outputLabel>
+                <p:selectOneMenu id="emp" converter="employeeConverter" value="#{commissionItemEmployeeBean.employee}">
+                    <f:selectItems value="#{commissionItemEmployeeBean.employees}" var="emp" itemLabel="#{emp.firstName+ ' ' +emp.surname}"
+                                   itemValue="#{emp}"/>
+                </p:selectOneMenu>
+
+            </h:panelGrid>
+            <p:commandButton action="#{commissionItemEmployeeBean.actionInsertNew}" value="Insert employee"
+                             update=":list:datalist ">
+            </p:commandButton>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>
+

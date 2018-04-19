@@ -118,7 +118,7 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
         commissionItem.setCommission(commission);
         commissionItem.setActivity(activity);
         commissionItemService.merge(commissionItem);
-        return "commissionItems";
+        return "ItemAssignedEmployee";
     }
 
 

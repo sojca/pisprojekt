@@ -58,7 +58,7 @@ public class CommissionItemEmployeeBean extends ViewPage<CommissionItemEmployee>
 
     public  CommissionItemEmployeeBean()
     {
-        commissionItem = new CommissionItem();
+        commissionItemEmployee = new CommissionItemEmployee();
     }
 
     @PostConstruct
@@ -89,6 +89,13 @@ public class CommissionItemEmployeeBean extends ViewPage<CommissionItemEmployee>
         return commissionItemService.findAll(CommissionItem.class);
     }
 
+    public double calculateCommissionItemExpenses(CommissionItemEmployee cie){
+        double expenses = 0.0;
+        expenses += cie.getRealHour() * (cie.getCommissionItem().getActivity().getDuration() /
+                cie.getCommissionItem().getActivity().getPricePerUnit());
+        return expenses;
+    }
+
     public String actionNew(){
         commissionItemEmployee = new CommissionItemEmployee();
         return "commissionItem_insert_edit";
@@ -98,7 +105,13 @@ public class CommissionItemEmployeeBean extends ViewPage<CommissionItemEmployee>
         commissionItemEmployee.setCommissionItem(commissionItem);
         commissionItemEmployee.setEmployee(employee);
         commissionItemEmployeeService.merge(commissionItemEmployee);
-        return "commissionItems";
+        return "itemAssignedEmployee";
+    }
+
+    public String actionOpenDetail(CommissionItem ci){
+        commissionItem=ci;
+        commissionItemEmployee.setCommissionItem(ci);
+        return "itemAssignedEmployee";
     }
 
     public void onDelete(SelectEvent event) {
