@@ -38,7 +38,25 @@ public class CommissionItemEmployee {
         this.expectedHour = expectedHour;
     }
 
-    @Override
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public void setCommissionItem(CommissionItem commissionItem) {
+        this.commissionItem = commissionItem;
+    }
+
+    public CommissionItem getCommissionItem() {
+        return commissionItem;
+    }
+
+
+        @Override
     public boolean equals(Object o) {
         if (this == o) return true;
 
