@@ -1,10 +1,9 @@
 package org.pis.bl.employee;
 
 import org.pis.core.AuthenticationBean;
-import org.pis.entity.Commission;
 import org.pis.entity.CommissionItem;
 import org.pis.entity.Employee;
-import org.pis.services.CommissionItemEmployeesService;
+import org.pis.services.CommissionItemEmployeeService;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -17,7 +16,7 @@ import java.util.List;
 public class EmployeeViewBean {
 
     @EJB
-    private CommissionItemEmployeesService commissionItemEmployeesService;
+    private CommissionItemEmployeeService commissionItemEmployeeService;
 
     @Inject
     private AuthenticationBean authenticationBean;
@@ -27,7 +26,7 @@ public class EmployeeViewBean {
 
     public List<CommissionItem> getCommissionItems(Employee employee){
         Employee a = authenticationBean.getEmployee();
-        return commissionItemEmployeesService.findCommissionItemsByEmployee(employee);
+        return commissionItemEmployeeService.findCommissionItemsByEmployee(employee);
     }
 
 }

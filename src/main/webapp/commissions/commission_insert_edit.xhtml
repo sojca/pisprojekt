@@ -14,9 +14,6 @@
         <h:form>
         <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
         <h:panelGrid columns="2">
-            <p:outputLabel for="comStat" value="Status: "></p:outputLabel>
-            <p:inputTextarea id="comStat" value="#{commissionBean.commission.status}" required="true">
-            </p:inputTextarea>
 
             <p:outputLabel for="commComp" rendered="true" value="Company: "></p:outputLabel>
             <p:selectOneMenu id="commComp" converter="companyConverter" value="#{commissionBean.company}">
