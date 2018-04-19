@@ -16,8 +16,8 @@ public class CommissionItemEmployeeService extends CrudService<CommissionItemEmp
                 .getResultList();
     }
 
-    public List<CommissionItem> findCommissionItemsByEmployee(Employee employee){
-        return em.createQuery("SELECT item.commissionItem " +
+    public List<CommissionItemEmployee> findCommissionItemsByEmployee(Employee employee){
+        return em.createQuery("SELECT item " +
                 "FROM CommissionItemEmployee item " +
                 "WHERE item.employee = :empl")
                 .setParameter("empl", employee)

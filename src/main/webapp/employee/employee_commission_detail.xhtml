@@ -14,15 +14,37 @@
 
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
-            <p:dataTable value="#{employeeViewBean.getCommissionItems(authenticationBean.employee)}" var="item" id="datalist" >
-                <p:column headerText="">
-                    <h:outputText value="#{item.amout}" />
-                </p:column>
-            </p:dataTable>
 
-            <ui:repeat var="item" value="#{employeeViewBean.getCommissionItems(authenticationBean.employee)}">
-                <div>item.amout</div>
-                <!--<h:panelGrid columns="2">-->
+            <ui:repeat var="item" value="#{employeeViewBean.commissionItems}">
+                <h:outputText value="Commission" ></h:outputText>
+
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="ID:" />
+                    <h:outputText  value="#{item.commissionItem.commission.id}" ></h:outputText>
+
+                    <h:outputLabel value="Customer name: " />
+                    <h:outputText  value="#{item.commissionItem.commission.company.name}" ></h:outputText>
+                    <h:outputLabel value="Customer adress 1: " />
+                    <h:outputText  value="#{item.commissionItem.commission.company.addressLine1}" ></h:outputText>
+                    <h:outputLabel value="Customer adress 2: " />
+                    <h:outputText  value="#{item.commissionItem.commission.company.addressLine1}" ></h:outputText>
+                    <h:outputLabel value="Customer name: " />
+                    <h:outputText  value="#{item.commissionItem.commission.company.city}" ></h:outputText>
+
+                </h:panelGrid>
+                <h:outputText value="Activity: " ></h:outputText>
+
+                <h:panelGrid columns="2">
+                    <h:outputLabel  value="Name: " />
+                    <h:outputText  value="#{item.commissionItem.activity.name}" ></h:outputText>
+
+                    <h:outputLabel value="Description: " />
+                    <h:outputText value="#{item.commissionItem.activity.description}" ></h:outputText>
+
+
+                </h:panelGrid>
+
+
                     <!--<h:outputText value="item" />-->
                     <!--<h:outputText value="" />-->
                 <!--</h:panelGrid>-->
