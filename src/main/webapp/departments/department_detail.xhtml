@@ -10,11 +10,13 @@
 <ui:composition template="../logged_template.xhtml">
     <ui:define name="content">
         <h:form>
+            <p:commandButton action="#{departmentDetailBean.actionOpenInsert()}" value="Insert activity">
+            </p:commandButton>
             <p:commandButton action="#{departmentDetailBean.actionOpenEdit()}" value="Edit department">
                 <f:param name="action" value="edit" />
             </p:commandButton>
             <p:button outcome="departments" value="Back to departments">
-            </p:button>
+        </p:button>
         </h:form>
         <div>
             <div><h:outputText value="#{departmentBean.department.name}" /></div>
@@ -46,25 +48,6 @@
         </h:form>
 
 
-        <h:form>
-            <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
-            <h:panelGrid columns="2">
-                <p:outputLabel for="actName"  value="Name: "></p:outputLabel>
-                <p:inputText id="actName" value="#{departmentDetailBean.activity.description}" required="true">
-                </p:inputText>
-
-                <p:outputLabel for="actEmpl"  value="Duration (hours)"></p:outputLabel>
-                <p:inputText id="actEmpl" value="#{departmentDetailBean.activity.duration}" required="true">
-                </p:inputText>
-
-                <p:outputLabel for="actPrice"  value="Price: "></p:outputLabel>
-                <p:inputText id="actPrice" value="#{departmentDetailBean.activity.pricePerUnit}" required="false">
-                </p:inputText>
-            </h:panelGrid>
-
-            <p:commandButton action="#{departmentDetailBean.actionAddActivity()}" value="Insert activity" update=":list:datalist">
-            </p:commandButton>
-        </h:form>
 
 
     </ui:define>

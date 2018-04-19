@@ -7,6 +7,7 @@ import org.pis.services.ActivityService;
 import org.pis.services.DepartmentService;
 import org.primefaces.event.SelectEvent;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -38,6 +39,7 @@ public class DepartmentDetailBean  extends ViewPage<Activity> implements Seriali
         this.activity = new Activity();
     }
 
+
     public void setDepartmentBean(DepartmentBean departmentBean) {
         this.departmentBean = departmentBean;
     }
@@ -63,6 +65,12 @@ public class DepartmentDetailBean  extends ViewPage<Activity> implements Seriali
         return "department_detail";
     }
 
+    public String actionOpenInsert(){
+        activity = new Activity();
+        activity.setDepartment(departmentBean.getDepartment());
+
+        return "activity_edit";
+    }
 
     public List<Activity> getActivities() {
 

@@ -10,6 +10,12 @@
 <ui:composition template="../logged_template.xhtml">
     <ui:define name="content">
 
+
+        <h:form id="add">
+            <p:commandButton action="#{commissionBean.actionNew()}" value="Insert commision">
+            </p:commandButton>
+        </h:form>
+
         <h:form id="list">
 
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
@@ -36,10 +42,6 @@
             </p:dataTable>
         </h:form>
 
-        <h:form id="add">
-            <p:commandButton action="#{commissionBean.actionNew()}" value="Insert commision">
-            </p:commandButton>
-        </h:form>
 
 
     </ui:define>
