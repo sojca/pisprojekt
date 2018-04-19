@@ -1,5 +1,6 @@
 package org.pis.services;
 
+import org.pis.entity.Department;
 import org.pis.entity.Employee;
 
 import javax.ejb.Stateless;
@@ -20,5 +21,11 @@ public class EmployeeService extends CrudService<Employee> {
         return em.createQuery("SELECT e from Employee e WHERE e.login = :login", Employee.class)
                 .setParameter("login", login)
                 .getSingleResult();
+    }
+
+    public List<Employee> getEmployeesByDepartment(Department department){
+        return em.createQuery("SELECT e from Employee e WHERE e.department = :dep")
+                .setParameter("dep", department)
+                .getResultList();
     }
 }

@@ -94,4 +94,9 @@ public class Employee {
         this.salary = salary;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return this.getId() == ((Employee)obj).getId();
+    }
+
 }

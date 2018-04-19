@@ -15,39 +15,112 @@
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
 
-            <ui:repeat var="item" value="#{employeeViewBean.commissionItems}">
-                <h:outputText value="Commission" ></h:outputText>
+            <ui:repeat var="commission" value="#{employeeViewBean.commissions}" >
+                <p:panelGrid>
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column colspan="4" style="font-weight: bold;">
+                                Commission
+                            </p:column>
+                        </p:row>
 
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="ID:" />
-                    <h:outputText  value="#{item.commissionItem.commission.id}" ></h:outputText>
+                    </f:facet>
 
-                    <h:outputLabel value="Customer name: " />
-                    <h:outputText  value="#{item.commissionItem.commission.company.name}" ></h:outputText>
-                    <h:outputLabel value="Customer adress 1: " />
-                    <h:outputText  value="#{item.commissionItem.commission.company.addressLine1}" ></h:outputText>
-                    <h:outputLabel value="Customer adress 2: " />
-                    <h:outputText  value="#{item.commissionItem.commission.company.addressLine1}" ></h:outputText>
-                    <h:outputLabel value="Customer name: " />
-                    <h:outputText  value="#{item.commissionItem.commission.company.city}" ></h:outputText>
+                    <p:row>
+                        <p:column style="font-weight: bold;">
+                        <h:outputLabel value="ID:" />
+                        </p:column>
+                        <p:column>
+                        <h:outputText  value="#{commission.id}" ></h:outputText>
+                        </p:column>
+                    </p:row>
 
-                </h:panelGrid>
-                <h:outputText value="Activity: " ></h:outputText>
+                    <p:row>
 
-                <h:panelGrid columns="2">
-                    <h:outputLabel  value="Name: " />
-                    <h:outputText  value="#{item.commissionItem.activity.name}" ></h:outputText>
+                        <p:column style="font-weight: bold;">
+                        <h:outputLabel value="Customer name: " />
+                        </p:column>
+                        <p:column>
+                        <h:outputText  value="#{commission.company.name}" ></h:outputText>
+                        </p:column>
+                    </p:row>
+                    <p:row>
 
-                    <h:outputLabel value="Description: " />
-                    <h:outputText value="#{item.commissionItem.activity.description}" ></h:outputText>
+                        <p:column style="font-weight: bold;">
+                        <h:outputLabel value="Customer adress 1: " />
+                        </p:column>
+                        <p:column>
+                        <h:outputText  value="#{commission.company.addressLine1}" ></h:outputText>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+
+                        <p:column style="font-weight: bold;">
+                        <h:outputLabel value="Customer adress 2: " />
+                        </p:column>
+                        <p:column>
+                        <h:outputText  value="#{commission.company.addressLine1}" ></h:outputText>
+                        </p:column>
+                    </p:row>
+
+                    <p:row>
+
+                        <p:column style="font-weight: bold;">
+                        <h:outputLabel value="Customer name: " />
+                        </p:column>
+                        <p:column>
+                        <h:outputText  value="#{commission.company.city}" ></h:outputText>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column style="font-weight: bold;">
+                            <h:outputText  value="Acitivities" ></h:outputText>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column style="font-weight: bold;">
+                            <h:outputLabel value="Name" />
+                        </p:column>
+                        <p:column style="font-weight: bold;">
+                            <h:outputText  value="Description" ></h:outputText>
+                        </p:column>
+                        <p:column style="font-weight: bold;">
+                            <h:outputText  value="Required hours" ></h:outputText>
+                        </p:column>
+                        <p:column style="font-weight: bold;">
+                            <h:outputText  value="Hours done" ></h:outputText>
+                        </p:column>
+                        <p:column style="font-weight: bold;">
+                            <h:outputText  value="Insert hours" ></h:outputText>
+                        </p:column>
+                    </p:row>
+                    <ui:repeat var="item" value="#{employeeViewBean.getItemsByCommission(commission)}" >
+
+                        <p:row>
+
+                            <p:column>
+                                <h:outputText  value="#{item.commissionItem.activity.name}" ></h:outputText>
+                            </p:column>
+
+                            <p:column>
+                             <h:outputText value="#{item.commissionItem.activity.description}" ></h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <h:outputText value="#{item.commissionItem.activity.duration*item.commissionItem.amount}" ></h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <h:outputText value="#{employeeViewBean.getHoursDone(item)}" ></h:outputText>
+                            </p:column>
 
 
-                </h:panelGrid>
 
+                        </p:row>
 
-                    <!--<h:outputText value="item" />-->
-                    <!--<h:outputText value="" />-->
-                <!--</h:panelGrid>-->
+                    </ui:repeat>
+
+                </p:panelGrid>
 
             </ui:repeat>
 

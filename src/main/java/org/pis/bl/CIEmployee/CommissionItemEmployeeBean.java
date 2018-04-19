@@ -39,6 +39,7 @@ public class CommissionItemEmployeeBean extends ViewPage<CommissionItemEmployee>
     private CommissionItemEmployee commissionItemEmployee;
 
     public void setEmployee(Employee employee) {
+
         this.employee = employee;
     }
 
@@ -72,12 +73,14 @@ public class CommissionItemEmployeeBean extends ViewPage<CommissionItemEmployee>
     }
 
     public Employee findEmployee (int id) {
-        return employeeService.find(Employee.class, id);
+        Employee e = employeeService.find(Employee.class, id);
+        return e;
     }
 
     public List<Employee> getEmployees()
     {
-        return employeeService.findAll(Employee.class);
+        Department department = getCommissionItem().getActivity().getDepartment();
+        return employeeService.getEmployeesByDepartment(department);
     }
 
     public CommissionItem findCommissionItem (int id) {
@@ -105,6 +108,7 @@ public class CommissionItemEmployeeBean extends ViewPage<CommissionItemEmployee>
         commissionItemEmployee.setCommissionItem(commissionItem);
         commissionItemEmployee.setEmployee(employee);
         commissionItemEmployeeService.merge(commissionItemEmployee);
+        commissionItemEmployee = new CommissionItemEmployee();
         return "itemAssignedEmployee";
     }
 

@@ -43,8 +43,8 @@ public class Activity {
         return description;
     }
 
-    public void setDescription(String desciption) {
-        this.description = desciption;
+    public void setDescription(String description) {
+        this.description = description  ;
     }
 
     public float getPricePerUnit() {

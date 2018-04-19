@@ -11,12 +11,14 @@
     <ui:define name="content">
 
         <h:form id="list">
+            <p:button outcome="commissionItems" value="Back to commission items">
+            </p:button>
 
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
             <p:dataTable value="#{commissionItemEmployeeBean.commissionItemEmployees}" var="emp" sortBy="#{ci.activity.description}" id="datalist">
                 <p:column headerText="Name">
-                    <h:outputText value="#{emp.employee.firstName + ' ' + emp.employee.surname}"/>
+                    <h:outputText value="#{emp.employee.firstName} #{emp.employee.surname}"/>
                 </p:column>
                 <p:column headerText="Hours spend">
                     <h:outputText value="#{emp.realHour}"/>
@@ -25,7 +27,7 @@
                     <h:outputText value="#{commissionItemEmployeeBean.calculateCommissionItemExpenses(emp)}"/>
                 </p:column>
                 <p:column headerText="Delete">
-                    <p:commandButton actionListener="#{commissionItemEmployeeBean.openDeleteDialog(ci)}" value="Delete">
+                    <p:commandButton actionListener="#{commissionItemEmployeeBean.openDeleteDialog(emp)}" value="Delete">
                         <p:ajax event="dialogReturn" listener="#{commissionItemEmployeeBean.onDelete}" update="datalist"/>
                     </p:commandButton>
                 </p:column>
@@ -34,10 +36,10 @@
         <h:outputText style="font-size:16px;" value="Total: #{commissionItemBean.sum}" id="sum"/>
         <h:form id="add">
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
-            <h:panelGrid columns="1">
+            <h:panelGrid columns="2">
                 <p:outputLabel for="emp" rendered="true" value="Employee: "></p:outputLabel>
                 <p:selectOneMenu id="emp" converter="employeeConverter" value="#{commissionItemEmployeeBean.employee}">
-                    <f:selectItems value="#{commissionItemEmployeeBean.employees}" var="emp" itemLabel="#{emp.firstName+ ' ' +emp.surname}"
+                    <f:selectItems value="#{commissionItemEmployeeBean.employees}" var="emp" itemLabel="#{emp.firstName} #{emp.surname}"
                                    itemValue="#{emp}"/>
                 </p:selectOneMenu>
 

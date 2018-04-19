@@ -17,7 +17,10 @@
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
             <h:panelGrid columns="2">
                 <p:outputLabel for="actName"  value="Name: "></p:outputLabel>
-                <p:inputText id="actName" value="#{departmentDetailBean.activity.description}" required="true">
+                <p:inputText id="actName" value="#{departmentDetailBean.activity.name}" required="true">
+                </p:inputText>
+                <p:outputLabel for="actDesc"  value="Description: "></p:outputLabel>
+                <p:inputText id="actDesc" value="#{departmentDetailBean.activity.description}" required="true">
                 </p:inputText>
 
                 <p:outputLabel for="actEmpl"  value="Duration (hours)"></p:outputLabel>

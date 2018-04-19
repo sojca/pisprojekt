@@ -29,7 +29,10 @@
                         <f:param name="action" value="edit" />
                     </p:commandButton>
                 </p:column>
-                <p:column headerText="Desc">
+                <p:column headerText="Name">
+                    <h:outputText value="#{act.name}" />
+                </p:column>
+                <p:column headerText="Description">
                     <h:outputText value="#{act.description}" />
                 </p:column>
                 <p:column headerText="Duration(hours)">
