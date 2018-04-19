@@ -12,18 +12,21 @@
 
         <h:form id="list">
 
-                <h:outputText style="font-size:16px;" value="Customer: #{commissionItemBean.commission.company.name}  "/>
+                <h:outputText style="font-size:16px;" value="Customer: #{commissionItemBean.commission.company.name} "/>
                 <h:outputText style="font-size:16px;" value="ID: #{commissionItemBean.commission.company.id} "/>
 
 
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
             <p:dataTable value="#{commissionItemBean.commissionItems}" var="ci" sortBy="#{ci.activity.description}" id="datalist">
-                <p:column headerText="Name">
+                <p:column headerText="Item">
                     <h:outputText value="#{ci.activity.description}"/>
                 </p:column>
                 <p:column headerText="Amount">
                     <h:outputText value="#{ci.amount}"/>
+                </p:column>
+                <p:column headerText="ActualAmount">
+                    <h:outputText value="#{ci.realAmount}"/>
                 </p:column>
                 <p:column headerText="Price">
                     <h:outputText value="#{ci.amount * ci.activity.pricePerUnit}"/>
@@ -33,18 +36,9 @@
                         <p:ajax event="dialogReturn" listener="#{commissionItemBean.onDelete}" update="datalist"/>
                     </p:commandButton>
                 </p:column>
-                <p:summaryRow>
-                    <p:column >
-                        <h:outputText value="Total:"/>
-                    </p:column>
-                    <p:column colspan="3" style="text-align:left">
-                        <h:outputText value="#{commissionItemBean.sum}">
-                            <f:convertNumber type="currency" currencySymbol="$"/>
-                        </h:outputText>
-                    </p:column>
-                </p:summaryRow>
             </p:dataTable>
         </h:form>
+        <h:outputText style="font-size:16px;" value="Total: #{commissionItemBean.sum}"/>
         <h:form id="add">
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
             <h:panelGrid columns="2">
