@@ -12,20 +12,21 @@
     <ui:define name="content">
 
         <h:form>
+            <p:button outcome="department_detail" value="Back to department detail">
+            </p:button>
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
             <h:panelGrid columns="2">
-                <p:outputLabel for="actName" value="Description: "></p:outputLabel>
+                <p:outputLabel for="actName"  value="Name: "></p:outputLabel>
                 <p:inputText id="actName" value="#{departmentDetailBean.activity.description}" required="true">
                 </p:inputText>
 
-                <p:outputLabel for="actNumberEmployees" value="Number Of Employees: "></p:outputLabel>
-                <p:inputText id="actNumberEmployees" value="#{departmentDetailBean.activity.numberEmployees}" required="true">
+                <p:outputLabel for="actEmpl"  value="Duration (hours)"></p:outputLabel>
+                <p:inputText id="actEmpl" value="#{departmentDetailBean.activity.duration}" required="true">
                 </p:inputText>
 
-                <p:outputLabel for="actPricePerUnit" value="Price: "></p:outputLabel>
-                <p:inputText id="actPricePerUnit" value="#{departmentDetailBean.activity.pricePerUnit}" required="false">
+                <p:outputLabel for="actPrice"  value="Price: "></p:outputLabel>
+                <p:inputText id="actPrice" value="#{departmentDetailBean.activity.pricePerUnit}" required="false">
                 </p:inputText>
-
             </h:panelGrid>
 
             <p:commandButton name="insert" action="#{departmentDetailBean.actionInsertActivity()}"

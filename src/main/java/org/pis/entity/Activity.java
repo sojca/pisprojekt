@@ -2,6 +2,7 @@ package org.pis.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.DefaultValue;
 import java.util.List;
 
 @Entity

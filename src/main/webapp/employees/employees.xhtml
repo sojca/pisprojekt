@@ -12,6 +12,9 @@
 
         <h:form id="list">
 
+            <p:commandButton action="#{employeeBean.actionInsert}" value="Insert employee">
+            </p:commandButton>
+
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
             <p:dataTable value="#{employeeBean.employees}" var="employee" id="datalist" >
@@ -33,40 +36,7 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-        <h:form id="add">
-            <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
-            <h:panelGrid columns="2">
 
-                <p:outputLabel for="emplFirstName" rendered="true" value="First name: "></p:outputLabel>
-                <p:inputText id="emplFirstName" value="#{employeeBean.employee.firstName}" required="true">
-                </p:inputText>
-                <p:outputLabel for="emplSurName" rendered="true" value="Surname: "></p:outputLabel>
-                <p:inputText id="emplSurName" value="#{employeeBean.employee.surname}" required="true">
-                </p:inputText>
-
-                <p:outputLabel for="emplSal" rendered="true" value="Salary (hour): "></p:outputLabel>
-                <p:inputText id="emplSal" value="#{employeeBean.employee.salary}" required="true">
-                </p:inputText>
-
-
-                <p:outputLabel for="emplRole" rendered="true" value="Role: "></p:outputLabel>
-                <p:selectOneMenu id="emplRole" value="#{employeeBean.employee.role}">
-                    <f:selectItems value="#{rolesBean.roles}" var="role" itemLabel="#{role.label}" itemValue="#{role}" />
-
-                </p:selectOneMenu>
-
-
-                <p:outputLabel for="emplDep" rendered="true" value="Department: "></p:outputLabel>
-                <p:selectOneMenu id="emplDep" converter="departmentConverter" value="#{employeeBean.department}">
-                    <f:selectItems value="#{employeeBean.departments}" var="dep" itemLabel="#{dep.name}" itemValue="#{dep}" />
-
-                </p:selectOneMenu>
-
-            </h:panelGrid>
-
-            <p:commandButton action="#{employeeBean.actionInsertNew}" value="Insert employee" update="add :list:datalist">
-            </p:commandButton>
-        </h:form>
 
     </ui:define>
 </ui:composition>
