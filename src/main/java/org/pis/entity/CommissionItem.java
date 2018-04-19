@@ -11,6 +11,8 @@ public class CommissionItem {
     private int id;
     private int amount;
 
+    public int status;
+
     @ManyToOne
     private Commission commission;
 
@@ -50,5 +52,13 @@ public class CommissionItem {
 
     public Activity getActivity() {
         return activity;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -11,7 +11,8 @@ public class CommissionItemEmployee {
     @EmbeddedId
     private CommissionItemEmployeeId id;
 
-    private int expectedHour;
+    private int realHour;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("commissionItemId")
@@ -30,12 +31,12 @@ public class CommissionItemEmployee {
         this.id = id;
     }
 
-    public int getExpectedHour() {
-        return expectedHour;
+    public int getRealHour() {
+        return realHour;
     }
 
-    public void setExpectedHour(int expectedHour) {
-        this.expectedHour = expectedHour;
+    public void setRealHour(int realHour) {
+        this.realHour = realHour;
     }
 
     @Override

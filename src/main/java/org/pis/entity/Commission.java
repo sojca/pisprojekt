@@ -8,7 +8,6 @@ public class Commission {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
-    public int status;
 
 
     @OneToMany(mappedBy = "commission", fetch = FetchType.EAGER, orphanRemoval = true)
@@ -28,14 +27,6 @@ public class Commission {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 
     public List<CommissionItem> getCommissionItems() {
