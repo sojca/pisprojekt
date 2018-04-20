@@ -18,6 +18,11 @@
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
             <p:dataTable value="#{employeeBean.employees}" var="employee" id="datalist" >
+                <p:column headerText="Edit">
+                    <p:commandButton action="#{employeeBean.actionOpenEditEmployee(employee)}" value="Edit" icon="ui-icon-extlink">
+                        <f:param name="action" value="edit" />
+                    </p:commandButton>
+                </p:column>
                 <p:column headerText="Surname">
                     <h:outputText value="#{employee.surname}" />
                 </p:column>
@@ -26,6 +31,9 @@
                 </p:column>
                 <p:column headerText="Salary">
                     <h:outputText value="#{employee.salary}" />
+                </p:column>
+                <p:column headerText="Login">
+                    <h:outputText value="#{employee.login}" />
                 </p:column>
                 <p:column headerText="Department">
                     <h:outputText value="#{employee.department.name}" />

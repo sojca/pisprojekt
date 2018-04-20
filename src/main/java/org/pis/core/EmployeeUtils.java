@@ -19,7 +19,8 @@ public class EmployeeUtils {
         String surnameNorm = Normalizer.normalize(empl.getSurname().toLowerCase(), Normalizer.Form.NFD);
         surnameNorm = surnameNorm.replaceAll("[^\\p{ASCII}]", "");
 
-        List<Employee> lastUsedUserName = employeeService.getLastUsedUsername(empl);
+        List<Employee> lastUsedUserName = employeeService.getLastUsedUsername(surnameNorm);
+
         if (lastUsedUserName.size() > 0 && lastUsedUserName.get(0) != null ){
             String sequence = lastUsedUserName.get(0).getLogin().substring(surnameNorm.length());
             if(sequence.length() == 0){

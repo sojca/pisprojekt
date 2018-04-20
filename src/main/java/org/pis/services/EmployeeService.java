@@ -9,11 +9,13 @@ import java.util.List;
 @Stateless
 public class EmployeeService extends CrudService<Employee> {
 
-    public List<Employee> getLastUsedUsername(Employee employee){
-        return em.createQuery("SELECT e from Employee e WHERE e.login like :login order by e.login desc", Employee.class)
-                .setParameter("login", employee.getLogin()+ "%")
+    public List<Employee> getLastUsedUsername(String employeeLogin){
+        employeeLogin = employeeLogin.concat("%");
+        List<Employee> l =  em.createQuery("SELECT e from Employee e WHERE e.login like :login order by e.login desc")
+                .setParameter("login", employeeLogin)
                 .setMaxResults(1)
                 .getResultList();
+        return l;
     }
 
     public Employee getUserByLogin(String login){

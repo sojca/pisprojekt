@@ -1,9 +1,9 @@
 package org.pis.core;
 
 public enum Roles {
-    ADMIN("Admin"),
+    EMPLOYEE("Employee"),
     MANAGER("Manager"),
-    EMPLOYEE("Employee");
+    ADMIN("Admin");
 
     private String label;
 
