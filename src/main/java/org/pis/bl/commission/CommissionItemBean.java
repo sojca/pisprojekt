@@ -2,8 +2,12 @@ package org.pis.bl.commission;
 
 
 import org.pis.bl.ViewPage;
-import org.pis.entity.*;
-import org.pis.services.*;
+import org.pis.entity.Activity;
+import org.pis.entity.Commission;
+import org.pis.entity.CommissionItem;
+import org.pis.services.ActivityService;
+import org.pis.services.CommissionItemService;
+import org.pis.services.CommissionService;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;

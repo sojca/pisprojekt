@@ -15,7 +15,7 @@ public class AuthorizationBean implements Serializable {
     private AuthenticationBean authenticationBean;
 
     public boolean isUserInRole(String role){
-        if(authenticationBean.getEmployee() == null){
+        if(authenticationBean.getEmployee() == null || !authenticationBean.isAuthorized()){
             return false;
         }
         Employee e = authenticationBean.getEmployee();

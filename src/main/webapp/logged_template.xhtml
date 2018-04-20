@@ -9,6 +9,7 @@
     <h:head>
         <title><ui:insert name="title">Sample Application</ui:insert></title>
         <h:outputStylesheet library="style" name="style.css" />
+        <meta http-equiv="refresh" content="#{authenticationBean.getSessionTimeout()}; URL=#{authenticationBean.getLogoutPath()}"/>
     </h:head>
 
     <h:body>
@@ -18,7 +19,7 @@
 
                 </ui:insert>
                 <h1 class="nav-header">PIS projekt</h1>
-                <h:form styleClass="nav-menu">
+                <h:form class="nav-menu">
                 <p:menubar>
 
                     <p:menuitem value="Homepage" outcome="/index" />
@@ -29,23 +30,24 @@
                     <p:menuitem value="Employee view" outcome="/employee/employee_commission_detail" />
 
                     <f:facet name="options">
-                        <p:button type="button" value="Logout" outcome="/logout" />
                     </f:facet>
                 </p:menubar>
                 </h:form>
+                <span class="nav-menu">
+                    <h:form>
+                        <p:commandButton value="Logout" action="#{logoutBean.actionLogout()}" />
+                    </h:form>
+                </span>
+
                 <!--<ul class="nav-menu">-->
                     <!--<li><p:link value="Homepage"  outcome="index" /></li>-->
                     <!--<li><p:link value="Department"  outcome="department" /></li>-->
                 <!--</ul>-->
-                <h:outputText value="#{authenticationBean.employee.surname}"></h:outputText>
-                <h:outputText value="#{authenticationBean.employee.firstName}"></h:outputText>
-                <h:outputText value="#{authenticationBean.employee.role.label}"></h:outputText>
+                <h:outputText value="#{authenticationBean.employee.surname}"/>
+                <h:outputText value="#{authenticationBean.employee.firstName}"/>
+                <h:outputText value="#{authenticationBean.employee.role.label}"/>
 
-                <h:outputText rendered="#{authorizationBean.isUserInRole('Admin')}" value="TEST_A"></h:outputText>
-                <h:outputText rendered="#{authorizationBean.isUserInRole('MANAGER')}" value="TEST_M"></h:outputText>
-                <h:outputText rendered="#{authorizationBean.isUserInRole('employee')}" value="TEST_E"></h:outputText>
-
-                <div class="nav-bottom"></div>
+                <div class="nav-bottom"/>
 
 
             </div>

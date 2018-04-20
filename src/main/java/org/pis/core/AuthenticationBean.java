@@ -7,6 +7,7 @@ import org.pis.services.EmployeeService;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.NoResultException;
@@ -27,13 +28,15 @@ public class AuthenticationBean implements Serializable
 
     private Employee employee;
 
+
+
     private boolean authorized;
     private String login;
     private String password;
 
     public AuthenticationBean()
     {
-        authorized = false;
+        setAuthorized(false);
     }
 
     public boolean isAuthorized()
@@ -72,11 +75,6 @@ public class AuthenticationBean implements Serializable
         this.employee = employee;
     }
 
-    public String actionLogout()
-    {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "logout";
-    }
 
     public String actionLogin()
     {
@@ -98,5 +96,15 @@ public class AuthenticationBean implements Serializable
 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error","Invalid login"));
         return "login_failed";
+    }
+
+    public String getLogoutPath(){
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        String path = ec.getRequestContextPath();
+        return path.concat("/logout.xhtml");
+    }
+
+    public String getSessionTimeout(){
+        return "600" ;
     }
 }
