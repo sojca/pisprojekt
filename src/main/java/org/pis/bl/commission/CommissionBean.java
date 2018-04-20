@@ -4,27 +4,19 @@ package org.pis.bl.commission;
 import org.pis.bl.ViewPage;
 import org.pis.entity.Commission;
 import org.pis.entity.Company;
-import org.pis.entity.Department;
 import org.pis.services.CommissionService;
 import org.pis.services.CompanyService;
-import org.pis.services.DepartmentService;
-import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ComponentSystemEvent;
+import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class CommissionBean extends ViewPage<Commission> implements Serializable {
     private static final long serialVersionUID = 1L;
 

@@ -1,9 +1,11 @@
 package org.pis.bl.employee;
 
+import org.pis.bl.commission.CoStatus;
 import org.pis.core.AuthenticationBean;
 import org.pis.entity.*;
 import org.pis.services.CommissionItemEmployeeService;
 import org.pis.services.CommissionItemService;
+import org.pis.services.CommissionService;
 import org.primefaces.PrimeFaces;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
@@ -35,6 +37,9 @@ public class EmployeeViewBean implements Serializable {
 
     @EJB
     private CommissionItemService commissionItemService;
+
+    @EJB
+    private CommissionService commissionService;
 
     private Employee employee;
     private CommissionItemEmployee itemToUpdate;
@@ -110,7 +115,14 @@ public class EmployeeViewBean implements Serializable {
     public void onUpdateHours(SelectEvent event) {
         float hours = (float) event.getObject();
         itemToUpdate.setRealHour(itemToUpdate.getRealHour()+hours);
+        itemToUpdate.getCommissionItem().setStatus(CoStatus.PARTLY_FINISHED);
+        itemToUpdate.getCommissionItem().getCommission().setStatus(CoStatus.PARTLY_FINISHED);
+
+        commissionService.merge(itemToUpdate.getCommissionItem().getCommission());
+        commissionItemService.merge(itemToUpdate.getCommissionItem());
         commissionItemEmployeeService.merge(itemToUpdate);
+
+
         itemToUpdate = null;
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("employee_commission_detail.xhtml");

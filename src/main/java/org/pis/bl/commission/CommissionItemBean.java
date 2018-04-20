@@ -1,25 +1,19 @@
 package org.pis.bl.commission;
 
 
-        import org.pis.bl.ViewPage;
-        import org.pis.bl.commission.CommissionBean;
-        import org.pis.entity.*;
-        import org.pis.services.*;
-        import org.primefaces.PrimeFaces;
-        import org.primefaces.event.SelectEvent;
+import org.pis.bl.ViewPage;
+import org.pis.entity.*;
+import org.pis.services.*;
+import org.primefaces.event.SelectEvent;
 
-        import javax.annotation.PostConstruct;
-        import javax.ejb.EJB;
-        import javax.faces.application.FacesMessage;
-        import javax.faces.bean.ManagedBean;
-        import javax.faces.bean.ManagedProperty;
-        import javax.faces.bean.SessionScoped;
-        import javax.faces.context.FacesContext;
-        import javax.faces.event.ComponentSystemEvent;
-        import java.io.Serializable;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 
 @ManagedBean
 @SessionScoped
@@ -141,5 +135,27 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
 //            loadDepartments();
         }
         objectToDelete = null;
+    }
+
+    public boolean isFinished(CommissionItem commissionItem){
+        return commissionItem.getStatus() == CoStatus.FINISHED;
+    }
+    public void finishItem(CommissionItem commissionItem){
+        commissionItem.setStatus(CoStatus.FINISHED);
+
+        boolean coFinished = true;
+        for(CommissionItem ci : commissionItem.getCommission().getCommissionItems()){
+            if(ci.getStatus() != CoStatus.FINISHED){
+                coFinished = false;
+                break;
+            }
+        }
+        if(coFinished){
+            commissionItem.getCommission().setStatus(CoStatus.FINISHED);
+            commissionItem.getCommission().setCoFinished(new Date());
+        }
+
+        commissionItemService.merge(commissionItem);
+        commissionService.merge(commissionItem.getCommission());
     }
 }

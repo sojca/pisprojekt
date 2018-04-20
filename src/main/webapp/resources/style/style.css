@@ -38,3 +38,7 @@ html, body{
 h1{
     text-align: center;
 }
+
+.ui-datatable-tablewrapper{
+    margin: 10px 5px 10px;
+}

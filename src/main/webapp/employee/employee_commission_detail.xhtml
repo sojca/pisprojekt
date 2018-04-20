@@ -17,7 +17,7 @@
                 <p:panelGrid>
                     <f:facet name="header">
                         <p:row>
-                            <p:column colspan="4" style="font-weight: bold;">
+                            <p:column colspan="5" style="font-weight: bold;">
                                 Commission
                             </p:column>
                         </p:row>
@@ -25,58 +25,59 @@
                     </f:facet>
 
                     <p:row>
-                        <p:column style="font-weight: bold;">
-                        <h:outputLabel value="ID:" />
+                        <p:column style="font-weight: bold;" colspan="2">
+                            <h:outputLabel value="ID:" />
                         </p:column>
-                        <p:column>
-                        <h:outputText  value="#{commission.id}" ></h:outputText>
+                        <p:column colspan="3">
+                            <h:outputText  value="#{commission.id}" ></h:outputText>
                         </p:column>
                     </p:row>
 
                     <p:row>
 
-                        <p:column style="font-weight: bold;">
+                        <p:column style="font-weight: bold;" colspan="2">
                         <h:outputLabel value="Customer name: " />
                         </p:column>
-                        <p:column>
+                        <p:column colspan="3">
                         <h:outputText  value="#{commission.company.name}" ></h:outputText>
                         </p:column>
                     </p:row>
                     <p:row>
 
-                        <p:column style="font-weight: bold;">
+                        <p:column style="font-weight: bold;" colspan="2">
                         <h:outputLabel value="Address line 1: " />
                         </p:column>
-                        <p:column>
+                        <p:column colspan="3">
                         <h:outputText  value="#{commission.company.addressLine1}" ></h:outputText>
                         </p:column>
                     </p:row>
                     <p:row>
 
-                        <p:column style="font-weight: bold;">
+                        <p:column style="font-weight: bold;" colspan="2">
                         <h:outputLabel value="Address line 2: " />
                         </p:column>
-                        <p:column>
+                        <p:column colspan="3">
                         <h:outputText  value="#{commission.company.addressLine1}" ></h:outputText>
                         </p:column>
                     </p:row>
 
                     <p:row>
 
-                        <p:column style="font-weight: bold;">
+                        <p:column style="font-weight: bold;" colspan="2">
                         <h:outputLabel value="City: " />
                         </p:column>
-                        <p:column>
+                        <p:column colspan="3">
                         <h:outputText  value="#{commission.company.city}" ></h:outputText>
                         </p:column>
                     </p:row>
                     <p:row>
-                        <p:column style="font-weight: bold;">
-                            <h:outputText  value="Acitivities" ></h:outputText>
-                        </p:column>
+                            <p:column colspan="5" style="text-align: center;">
+                                <h:outputText style="font-weight: bold;" value="Acitivities" ></h:outputText>
+                            </p:column>
                     </p:row>
-                    <p:row>
-                        <p:column style="font-weight: bold;">
+
+                    <p:row style="font-weight: bold;text-align: center;">
+                        <p:column >
                             <h:outputLabel value="Name" />
                         </p:column>
                         <p:column style="font-weight: bold;">
@@ -85,7 +86,7 @@
                         <p:column style="font-weight: bold;">
                             <h:outputText  value="Required hours" ></h:outputText>
                         </p:column>
-                        <p:column style="font-weight: bold;">
+                        <p:column style="font-weight: bold;" colspan="2">
                             <h:outputText  value="Hours done" ></h:outputText>
                         </p:column>
 

@@ -20,14 +20,23 @@
 
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
-            <p:dataTable value="#{commissionItemBean.commissionItems}" var="ci" sortBy="#{ci.activity.description}" id="datalist">
+            <p:dataTable value="#{commissionItemBean.commissionItems}" var="ci" sortBy="#{ci.activity.description}" id="datalist" style="text-align: center;">
                 <p:column headerText="Item">
                     <h:outputText value="#{ci.activity.description}"/>
                 </p:column>
                 <p:column headerText="Amount">
                     <h:outputText value="#{ci.amount}"/>
                 </p:column>
-                <p:column headerText="ActualAmount">
+                <p:column headerText="Status">
+                    <h:outputText value="#{ci.status.label}"/>
+                </p:column>
+                <p:column headerText="Sign to finish">
+                        <p:commandButton update="datalist" action="#{commissionItemBean.finishItem(ci)}"
+                                         value="#{commissionItemBean.isFinished(ci)?'Finished':'Finish'}"
+                                         disabled="#{commissionItemBean.isFinished(ci)}">
+                        </p:commandButton>
+                </p:column>
+                <p:column headerText="Actual amount">
                     <h:outputText value="---0---"/>
                 </p:column>
                 <p:column headerText="Price">

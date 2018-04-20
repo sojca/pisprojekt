@@ -1,5 +1,7 @@
 package org.pis.entity;
 
+import org.pis.bl.commission.CoStatus;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,7 +13,8 @@ public class CommissionItem {
     private int id;
     private int amount;
 
-    public int status;
+    @Enumerated(EnumType.STRING)
+    private CoStatus status = CoStatus.NEW;
 
     @ManyToOne
     private Commission commission;
@@ -54,11 +57,11 @@ public class CommissionItem {
         return activity;
     }
 
-    public int getStatus() {
+    public CoStatus getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(CoStatus status) {
         this.status = status;
     }
 }
