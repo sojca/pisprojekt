@@ -11,7 +11,7 @@ public class CommissionItemEmployee {
     @EmbeddedId
     private CommissionItemEmployeeId id;
 
-    private int realHour;
+    private float realHour;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,11 +31,11 @@ public class CommissionItemEmployee {
         this.id = id;
     }
 
-    public int getRealHour() {
+    public float getRealHour() {
         return realHour;
     }
 
-    public void setRealHour(int realHour) {
+    public void setRealHour(float realHour) {
         this.realHour = realHour;
     }
 

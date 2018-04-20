@@ -1,7 +1,6 @@
 package org.pis.bl.converters;
 
-        import org.pis.bl.commissionItem.CommissionItemBean;
-        import org.pis.entity.Activity;
+        import org.pis.bl.commission.CommissionItemBean;
         import org.pis.entity.Commission;
 
         import javax.el.ValueExpression;

@@ -5,16 +5,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <ui:composition template="../logged_template.xhtml">
     <ui:define name="content">
 
-        <h:form id="list">
 
-            <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
-
-
+            <div id="grid">
             <ui:repeat var="commission" value="#{employeeViewBean.commissions}" >
                 <p:panelGrid>
                     <f:facet name="header">
@@ -47,7 +45,7 @@
                     <p:row>
 
                         <p:column style="font-weight: bold;">
-                        <h:outputLabel value="Customer adress 1: " />
+                        <h:outputLabel value="Address line 1: " />
                         </p:column>
                         <p:column>
                         <h:outputText  value="#{commission.company.addressLine1}" ></h:outputText>
@@ -56,7 +54,7 @@
                     <p:row>
 
                         <p:column style="font-weight: bold;">
-                        <h:outputLabel value="Customer adress 2: " />
+                        <h:outputLabel value="Address line 2: " />
                         </p:column>
                         <p:column>
                         <h:outputText  value="#{commission.company.addressLine1}" ></h:outputText>
@@ -66,7 +64,7 @@
                     <p:row>
 
                         <p:column style="font-weight: bold;">
-                        <h:outputLabel value="Customer name: " />
+                        <h:outputLabel value="City: " />
                         </p:column>
                         <p:column>
                         <h:outputText  value="#{commission.company.city}" ></h:outputText>
@@ -90,9 +88,7 @@
                         <p:column style="font-weight: bold;">
                             <h:outputText  value="Hours done" ></h:outputText>
                         </p:column>
-                        <p:column style="font-weight: bold;">
-                            <h:outputText  value="Insert hours" ></h:outputText>
-                        </p:column>
+
                     </p:row>
                     <ui:repeat var="item" value="#{employeeViewBean.getItemsByCommission(commission)}" >
 
@@ -109,11 +105,16 @@
                             <p:column>
                                 <h:outputText value="#{item.commissionItem.activity.duration*item.commissionItem.amount}" ></h:outputText>
                             </p:column>
-
                             <p:column>
-                                <h:outputText value="#{employeeViewBean.getHoursDone(item)}" ></h:outputText>
+                                <h:outputText value="#{employeeViewBean.getHoursDone(item)}"></h:outputText>
                             </p:column>
-
+                            <p:column>
+                                <h:form>
+                                    <p:commandButton value="Insert hours" icon="ui-icon-extlink" actionListener="#{employeeViewBean.openDialog(item)}">
+                                        <p:ajax event="dialogReturn" listener="#{employeeViewBean.onUpdateHours}" />
+                                    </p:commandButton>
+                                </h:form>
+                            </p:column>
 
 
                         </p:row>
@@ -124,9 +125,8 @@
 
             </ui:repeat>
 
-        </h:form>
 
-
+            </div>
     </ui:define>
 </ui:composition>
 </html>

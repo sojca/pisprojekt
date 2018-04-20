@@ -1,4 +1,4 @@
-package org.pis.bl.CIEmployee;
+package org.pis.bl.commission;
 
         import org.pis.bl.ViewPage;
         import org.pis.bl.commission.CommissionBean;

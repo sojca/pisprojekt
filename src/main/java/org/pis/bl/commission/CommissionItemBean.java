@@ -1,4 +1,4 @@
-package org.pis.bl.commissionItem;
+package org.pis.bl.commission;
 
 
         import org.pis.bl.ViewPage;

@@ -74,8 +74,7 @@ public class AuthenticationBean implements Serializable
 
     public String actionLogout()
     {
-        authorized = false;
-        employee = null;
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "logout";
     }
 
