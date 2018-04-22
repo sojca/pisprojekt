@@ -19,7 +19,7 @@
         <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
         <h:panelGrid columns="2">
 
-            <p:outputLabel for="commComp" rendered="true" value="Company: "></p:outputLabel>
+            <p:outputLabel for="commComp" rendered="true" value="Select customer: "></p:outputLabel>
             <p:selectOneMenu id="commComp" converter="companyConverter" value="#{commissionBean.company}">
                 <f:selectItems value="#{commissionBean.companies}" var="comp" itemLabel="#{comp.name}" itemValue="#{comp}" />
             </p:selectOneMenu>
