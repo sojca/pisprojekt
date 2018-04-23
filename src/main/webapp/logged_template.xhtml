@@ -23,11 +23,12 @@
                 <p:menubar>
 
                     <p:menuitem value="Homepage" outcome="/index" />
-                    <p:menuitem value="Department" outcome="/departments/departments" />
-                    <p:menuitem  value="Employee" outcome="/employees/employees" />
-                    <p:menuitem  value="Commission" outcome="/commissions/commissions" />
-                    <p:menuitem  value="Customers" outcome="/companies/companies" />
-                    <p:menuitem  value="Employee view" outcome="/employee/employee_commission_detail" />
+                    <p:menuitem rendered="#{authorizationBean.isUserInRole('admin')}" value="Department" outcome="/departments/departments" />
+                    <p:menuitem rendered="#{authorizationBean.isUserInRole('admin', 'manager')}" value="Employee" outcome="/employees/employees" />
+                    <p:menuitem rendered="#{authorizationBean.isUserInRole('admin', 'manager')}" value="Commission" outcome="/commissions/commissions" />
+                    <p:menuitem rendered="#{authorizationBean.isUserInRole('admin')}" value="Customers" outcome="/companies/companies" />
+                    <p:menuitem rendered="#{authorizationBean.isUserInRole('employee')}" value="Employee view" outcome="/employee/employee_commission_detail" />
+
 
                     <f:facet name="options">
                     </f:facet>

@@ -46,4 +46,43 @@
         <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
 
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>org.pis.core.AuthorizationAdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/companies/*</url-pattern>
+        <url-pattern>/departments/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>org.pis.core.AuthorizationManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <url-pattern>/commissions/*</url-pattern>
+        <url-pattern>/employees/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>EmployeeFilter</filter-name>
+        <filter-class>org.pis.core.AuthorizationEmployeeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EmployeeFilter</filter-name>
+        <url-pattern>/employee/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+
+
 </web-app>
