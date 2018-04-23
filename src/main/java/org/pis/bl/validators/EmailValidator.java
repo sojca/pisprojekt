@@ -39,7 +39,7 @@ public class EmailValidator implements Validator, ClientValidator {
     }
 
     public String getValidatorId() {
-        return "custom.emailValidator";
+        return "emailValidator";
     }
 
 }
