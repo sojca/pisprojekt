@@ -1,56 +1,64 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>Projekt PIS</title>
-        <style type="text/css">
-            table { border-collapse: collapse; }
-            td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
-            dt { font-weight: bold; margin-top: 0.5em; }
-        </style>
-    </head>
-    <body>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Projekt PIS</title>
+    <style type="text/css">
+        table { border-collapse: collapse; }
+        td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+        dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
 
 <!-- Nahraďte prosím názvem tématu -->
-        <h1>01: Firma1</h1>
+<h1>01: Firma1</h1>
 
 <!-- Editujte jména a maily autorů a jejich činnost -->
-        <dl>
-            <dt>Autoři</dt>
-            <dd>Martin Koppon
-                <a href="mailto:xkoppo00@stud.fit.vutbr.cz">xkoppo00@stud.fit.vutbr.cz</a> -
-                uživatelské rozhraní, databázový subsystém
-            </dd>
-            <dd>Juraj Sojčák
-                <a href="mailto:xsojca00@stud.fit.vutbr.cz">xsojca00@stud.fit.vutbr.cz</a> -
-                správa uživatelů a uživatelské rozhraní, databázový subsystém
-            <dd>Dušan Želiar
-                <a href="mailto:xzelia00@stud.fit.vutbr.cz">xzelia00@stud.fit.vutbr.cz</a> -
-                uživatelské rozhraní, databázový subsystém
-            </dd>
-        </dl>
+<dl>
+    <dt>Autoři</dt>
+    <dd>Martin Koppon
+        <a href="mailto:xkoppo00@stud.fit.vutbr.cz">xkoppo00@stud.fit.vutbr.cz</a> -
+        uživatelské rozhraní, databázový subsystém
+    </dd>
+    <dd>Juraj Sojčák
+        <a href="mailto:xsojca00@stud.fit.vutbr.cz">xsojca00@stud.fit.vutbr.cz</a> -
+        správa uživatelů a uživatelské rozhraní, databázový subsystém
+    <dd>Dušan Želiar
+        <a href="mailto:xzelia00@stud.fit.vutbr.cz">xzelia00@stud.fit.vutbr.cz</a> -
+        uživatelské rozhraní, databázový subsystém
+    </dd>
+</dl>
 
-        <!-- uživatelské účty -->
-        <h2>Uživatelé systému pro testování</h2>
-        <p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
-        <table>
-            <tbody><tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
-            <tr><td>admin</td><td>test</td><td>Administrator</td></tr>
-            <tr><td>manager</td><td>test</td><td>Manager</td></tr>
-            <tr><td>empl</td><td>test</td><td>Employee</td></tr>
-            </tbody></table>
+<!-- uživatelské účty -->
+<h2>Uživatelé systému pro testování</h2>
+<p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
+<table>
+    <tbody><tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+    <tr><td>admin</td><td>test</td><td>Administrator</td></tr>
+    <tr><td>manager</td><td>test</td><td>Manager</td></tr>
+    <tr><td>empl</td><td>test</td><td>Employee</td></tr>
+    </tbody></table>
 
-        <h2>Postup instalace</h2>
-        <p>TODO: Např. vyžadované prostředky na serveru, datové zdroje, inicializace databáze, apod. Stačí v několika stručných bodech.</p>
+<h2>Postup instalace</h2>
+<p>TODO: Např. vyžadované prostředky na serveru, datové zdroje, inicializace databáze, apod. Stačí v několika stručných bodech.</p>
+<ul>
+    <li>
+        Na serveri (pri implementáci bol používaný GlassFish 5.0) treba mať nastavený JDBC zdroj na JNDI názve "jdbc/__default".
+    </li>
+    <li>
+        Po vytvorení DB, je nunté spustiť SQL skript <u>seed.sql</u>.
+    </li>
+</ul>
 
-        <h2>Vyžadované knihovny</h2>
-    <ul>
-        <li>
-            Primefaces 6.2
-        </li>
-    </ul>
+<h2>Vyžadované knihovny</h2>
+<ul>
+    <li>
+        Primefaces 6.2
+    </li>
+</ul>
 
 
 
-    </body>
+</body>
 </html>
