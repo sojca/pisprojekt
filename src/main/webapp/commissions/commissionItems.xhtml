@@ -43,7 +43,7 @@
                         </p:commandButton>
                 </p:column>
                 <p:column headerText="Actual amount">
-                    <h:outputText value="---0---"/>
+                    <h:outputText value="#{commissionItemBean.getActualCosts(ci)}"/>
                 </p:column>
                 <p:column headerText="Price">
                     <h:outputText value="#{ci.amount * ci.activity.pricePerUnit}"/>
