@@ -29,32 +29,33 @@
                 <p:inputText id="cusICO" value="#{companyBean.company.ico}" required="false">
                 </p:inputText>
 
-                <p:outputLabel for="cusAddressLine1" value="Address line: "></p:outputLabel>
-                <p:inputText id="cusAddressLine1" value="#{companyBean.company.addressLine1}" required="true">
+                <p:outputLabel for="cusAddressLine1" value="Address line 1: "></p:outputLabel>
+                <p:inputText id="cusAddressLine1" value="#{companyBean.company.addressLine1}" required="false">
                 </p:inputText>
 
-                <p:outputLabel for="cusAddressLine2" value="Address line: "></p:outputLabel>
+                <p:outputLabel for="cusAddressLine2" value="Address line 2: "></p:outputLabel>
                 <p:inputText id="cusAddressLine2" value="#{companyBean.company.addressLine2}" required="false">
                 </p:inputText>
 
                 <p:outputLabel for="cusZipCode" value="ZIP code: "></p:outputLabel>
-                <p:inputText id="cusZipCode" value="#{companyBean.company.zipCode}" required="true">
+                <p:inputText id="cusZipCode" value="#{companyBean.company.zipCode}" required="false">
                 </p:inputText>
 
                 <p:outputLabel for="cusCity" value="City: "></p:outputLabel>
-                <p:inputText id="cusCity" value="#{companyBean.company.city}" required="true">
+                <p:inputText id="cusCity" value="#{companyBean.company.city}" required="false">
                 </p:inputText>
 
                 <p:outputLabel for="cusState" value="State: "></p:outputLabel>
-                <p:inputText id="cusState" value="#{companyBean.company.state}" required="true">
+                <p:inputText id="cusState" value="#{companyBean.company.state}" required="false">
                 </p:inputText>
 
                 <p:outputLabel for="cusEmail" value="Email: "></p:outputLabel>
-                <p:inputText id="cusEmail" value="#{companyBean.company.email}" required="true">
+                <p:inputText id="cusEmail" value="#{companyBean.company.email}" required="true" validatorMessage="Email is not valid">
+                    <f:validator validatorId="emailValidator" />
                 </p:inputText>
 
                 <p:outputLabel for="cusTelephoneNumber" value="Tel. number: "></p:outputLabel>
-                <p:inputText id="cusTelephoneNumber" value="#{companyBean.company.telephoneNumber}" required="true">
+                <p:inputText id="cusTelephoneNumber" value="#{companyBean.company.telephoneNumber}" required="false">
                 </p:inputText>
                 <!--<p:outputLabel for="cusDesc" value="Description: "></p:outputLabel>-->
                 <!--<p:inputTextarea id="cusDesc" value="#{companyBean.company.email}" required="true">-->
