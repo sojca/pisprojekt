@@ -12,7 +12,8 @@
     <ui:define name="content">
 
 
-            <div id="grid">
+        <div class="ui-datatable ui-widget">
+            <div id="grid" class="ui-datatable-tablewrapper">
             <ui:repeat var="commission" value="#{employeeViewBean.commissions}" >
                 <p:panelGrid>
                     <f:facet name="header">
@@ -128,6 +129,7 @@
 
 
             </div>
+        </div>
     </ui:define>
 </ui:composition>
 </html>

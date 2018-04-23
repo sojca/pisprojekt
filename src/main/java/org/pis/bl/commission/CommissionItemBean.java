@@ -2,6 +2,8 @@ package org.pis.bl.commission;
 
 
 import org.pis.bl.ViewPage;
+import org.pis.core.AuthenticationBean;
+import org.pis.core.AuthorizationBean;
 import org.pis.entity.Activity;
 import org.pis.entity.Commission;
 import org.pis.entity.CommissionItem;
@@ -14,6 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +35,9 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
 
     @EJB
     private CommissionItemService commissionItemService;
+
+    @Inject
+    AuthorizationBean auth;
 
     private CommissionItem commissionItem;
     private Commission commission;
@@ -89,6 +95,13 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
         return ci;
     }
 
+    public boolean canUserFinishItem(CommissionItem ci){
+
+        return auth.isUserInRole("admin") ||
+                (auth.isUserInRole("manager") &&
+                        ci.getActivity().getDepartment().getId() == auth.getAuthenticationBean().getEmployee().getDepartment().getId());
+    }
+
     public Activity findActivity (int id) {
         return activityService.find(Activity.class, id);
     }
@@ -107,11 +120,6 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
         return commissionService.findAll(Commission.class);
     }
 
-    public String actionNew(){
-        commissionItem = new CommissionItem();
-        return "commissionItem_insert_edit";
-    }
-
     public String actionInsertNew(){
         commissionItem.setCommission(commission);
         commissionItem.setActivity(activity);
@@ -121,11 +129,6 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
         return "commissionItems";
     }
 
-
-    public String actionEdit(Commission commission){
-        setCommission(commission);
-        return "commission_insert_edit";
-    }
 
     public String actionOpenDetail(Commission comm){
         commission=comm;
@@ -144,6 +147,11 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
     public boolean isFinished(CommissionItem commissionItem){
         return commissionItem.getStatus() == CoStatus.FINISHED;
     }
+
+    public boolean isCoNew(){
+        return commission.getStatus() == CoStatus.NEW;
+    }
+
     public void finishItem(CommissionItem commissionItem){
         commissionItem.setStatus(CoStatus.FINISHED);
 

@@ -14,7 +14,12 @@
         <h:form>
             <p:button outcome="departments" value="Back to departments">
             </p:button>
+
+        </h:form>
         <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
+
+        <div class="form-c">
+            <h:form>
         <h:panelGrid columns="2">
             <p:outputLabel for="depName" value="Name: "></p:outputLabel>
             <p:inputText id="depName" value="#{departmentBean.department.name}" required="true">
@@ -28,7 +33,9 @@
             <p:commandButton name="insert" action="#{departmentBean.actionInsert()}"
                              value="${(param['action'] != 'edit')?'Insert':'Edit'} department">
             </p:commandButton>
-</h:form>
+
+        </h:form>
+        </div>
     </ui:define>
 </ui:composition>
 </html>

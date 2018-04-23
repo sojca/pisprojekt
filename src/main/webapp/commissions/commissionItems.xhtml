@@ -14,9 +14,15 @@
             <p:button outcome="commissions" value="Back to commissions">
             </p:button>
 
-                <h:outputText style="font-size:16px;" value="Customer: #{commissionItemBean.commission.company.name} "/>
-                <h:outputText style="font-size:16px;" value="ID: #{commissionItemBean.commission.company.id} "/>
+            <p:panelGrid columns="2">
 
+                <h:outputText value="Commission number:" />
+                <h:outputText style="font-size:16px;" value="#{commissionItemBean.commission.id} "/>
+
+                <h:outputText value="Company name:" />
+                <h:outputText style="font-size:16px;" value="#{commissionItemBean.commission.company.name} "/>
+
+            </p:panelGrid>
 
             <p:messages id="messages_del" showDetail="true" closable="true" autoUpdate="true" for="list"/>
 
@@ -31,7 +37,7 @@
                     <h:outputText value="#{ci.status.label}"/>
                 </p:column>
                 <p:column headerText="Sign to finish">
-                        <p:commandButton update="datalist" action="#{commissionItemBean.finishItem(ci)}"
+                        <p:commandButton rendered="#{commissionItemBean.canUserFinishItem(ci)}" update="datalist" action="#{commissionItemBean.finishItem(ci)}"
                                          value="#{commissionItemBean.isFinished(ci)?'Finished':'Finish'}"
                                          disabled="#{commissionItemBean.isFinished(ci)}">
                         </p:commandButton>
@@ -54,7 +60,11 @@
             </p:dataTable>
         </h:form>
         <h:outputText style="font-size:16px;" value="Total: #{commissionItemBean.sum}" id="sum"/>
-        <h:form id="add">
+
+        <div class="form-c">
+
+
+        <h:form id="add" rendered="#{commissionItemBean.isCoNew()}">
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
             <h:panelGrid columns="2">
                 <p:outputLabel for="ciamount" rendered="true" value="Amount: "></p:outputLabel>
@@ -72,6 +82,8 @@
                              update=":list:datalist :sum">
             </p:commandButton>
         </h:form>
+        </div>
+
 
     </ui:define>
 </ui:composition>

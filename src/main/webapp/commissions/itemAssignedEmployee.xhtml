@@ -34,7 +34,10 @@
             </p:dataTable>
         </h:form>
         <h:outputText style="font-size:16px;" value="Total: #{commissionItemBean.sum}" id="sum"/>
-        <h:form id="add">
+
+        <div class="form-c">
+
+        <h:form id="add" rendered="#{commissionItemBean.isCoNew()}">
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
             <h:panelGrid columns="2">
                 <p:outputLabel for="emp" rendered="true" value="Employee: "></p:outputLabel>
@@ -48,7 +51,7 @@
                              update=":list:datalist ">
             </p:commandButton>
         </h:form>
-
+        </div>
     </ui:define>
 </ui:composition>
 </html>

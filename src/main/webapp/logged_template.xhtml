@@ -18,59 +18,48 @@
                 <ui:insert name="header">
 
                 </ui:insert>
-                <h1 class="nav-header">PIS projekt</h1>
+                <h1 class="nav-header">PIS</h1>
                 <h:form class="nav-menu">
                 <p:menubar>
 
                     <p:menuitem value="Homepage" outcome="/index" />
                     <p:menuitem value="Department" outcome="/departments/departments" />
-                    <p:menuitem value="Employee" outcome="/employees/employees" />
-                    <p:menuitem value="Commission" outcome="/commissions/commissions" />
-                    <p:menuitem value="Customers" outcome="/companies/companies" />
-                    <p:menuitem value="Employee view" outcome="/employee/employee_commission_detail" />
+                    <p:menuitem  value="Employee" outcome="/employees/employees" />
+                    <p:menuitem  value="Commission" outcome="/commissions/commissions" />
+                    <p:menuitem  value="Customers" outcome="/companies/companies" />
+                    <p:menuitem  value="Employee view" outcome="/employee/employee_commission_detail" />
 
                     <f:facet name="options">
                     </f:facet>
                 </p:menubar>
                 </h:form>
+
+                <p:panelGrid columns="3" styleClass="nav-menu logged-user">
+                    <h:outputText value="#{authenticationBean.employee.surname}"/>
+                    <h:outputText value="#{authenticationBean.employee.firstName}"/>
+                    <h:outputText value="#{authenticationBean.employee.role.label}"/>
+                </p:panelGrid>
+
                 <span class="nav-menu">
                     <h:form>
                         <p:commandButton value="Logout" action="#{logoutBean.actionLogout()}" />
                     </h:form>
                 </span>
-
-                <!--<ul class="nav-menu">-->
-                    <!--<li><p:link value="Homepage"  outcome="index" /></li>-->
-                    <!--<li><p:link value="Department"  outcome="department" /></li>-->
-                <!--</ul>-->
-                <h:outputText value="#{authenticationBean.employee.surname}"/>
-                <h:outputText value="#{authenticationBean.employee.firstName}"/>
-                <h:outputText value="#{authenticationBean.employee.role.label}"/>
-
-                <div class="nav-bottom"/>
-
+                <div class="nav-bottom"> </div>
 
             </div>
 
             <div id="content">
                 <ui:insert name="content">
-                    Content area.  See comments below this line in the source.
-                    <!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
-                    <!-- <div> -->
-                    <!-- <ui:include src="content.xhtml"/> -->
-                    <!-- </div> -->
+                    content
                 </ui:insert>
             </div>
-                <ui:insert name="modal">
-                    <!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
-                    <!-- <div> -->
-                    <!-- <ui:include src="content.xhtml"/> -->
-                    <!-- </div> -->
-                </ui:insert>
+
             <div id="footer">
                 <ui:insert name="footer">
                 </ui:insert>
-                &copy; 2018
+                    Dušan Želiar, Juraj Sojčák, Martin Koppon &copy; 2018
+
             </div>
         </div>
     </h:body>

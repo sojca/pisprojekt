@@ -18,10 +18,15 @@
             <p:button outcome="departments" value="Back to departments">
         </p:button>
         </h:form>
-        <div>
-            <div><h:outputText value="#{departmentBean.department.name}" /></div>
-            <div><h:outputText value="#{departmentBean.department.description}" /></div>
-        </div>
+
+            <p:panelGrid columns="2">
+                <h:outputText value="Department name:" />
+                <h:outputText value="#{departmentBean.department.name}" />
+
+                <h:outputText value="Department description:" />
+                <h:outputText value="#{departmentBean.department.description}" />
+            </p:panelGrid>
+
         <h:form id="list">
             <p:dataTable var="act" value="#{departmentDetailBean.activities}" id="datalist" >
                 <p:column headerText="Operations">

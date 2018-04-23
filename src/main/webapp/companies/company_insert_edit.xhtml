@@ -10,6 +10,13 @@
 
 <ui:composition template="../logged_template.xhtml">
     <ui:define name="content">
+        <h:form>
+            <p:button outcome="companies" value="Back to companies">
+            </p:button>
+
+        </h:form>
+
+        <div class="form-c">
 
         <h:form>
             <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
@@ -58,6 +65,8 @@
                              value="${(param['action'] != 'edit')?'Insert':'Edit'} customers">
             </p:commandButton>
         </h:form>
+        </div>
+
     </ui:define>
 </ui:composition>
 </html>

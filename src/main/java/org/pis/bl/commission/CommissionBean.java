@@ -28,6 +28,7 @@ public class CommissionBean extends ViewPage<Commission> implements Serializable
 
     private Company company;
     private Commission commission;
+    private List<Commission> commissions;
 
     public Company getCompany() {
         return company;
@@ -43,6 +44,10 @@ public class CommissionBean extends ViewPage<Commission> implements Serializable
         commission = new Commission();
     }
 
+    @PostConstruct
+    public void init(){
+        filterAll();
+    }
     public void setCommission(Commission commission)
     {
         this.commission = commission;
@@ -52,18 +57,13 @@ public class CommissionBean extends ViewPage<Commission> implements Serializable
         return commission;
     }
 
-    @PostConstruct
-    public void init(){
-//        loadCommisions();
-    }
-
     public Company findCompany (int id) {
         return companyService.find(Company.class, id);
     }
 
     public List<Commission> getCommissions()
     {
-        return commissionService.findAll(Commission.class);
+        return commissions;
     }
 
     public List<Company> getCompanies()
@@ -82,21 +82,16 @@ public class CommissionBean extends ViewPage<Commission> implements Serializable
         return "commissions";
     }
 
-
-    public String actionEdit(Commission commission){
-        setCommission(commission);
-        return "commission_insert_edit";
+    public void filterFinished(){
+        commissions = commissionService.getFinished();
     }
-
-    public String actionOpenDetail(Commission commission){
-        setCommission(commission);
-        return "commission_detail";
+    public void filterAll(){
+        commissions = commissionService.findAll(Commission.class);
     }
 
     public void onDelete(SelectEvent event) {
         if((Boolean)event.getObject()){
             commissionService.remove(objectToDelete);
-//            loadDepartments();
         }
         objectToDelete = null;
     }

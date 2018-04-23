@@ -11,9 +11,16 @@
     <ui:define name="content">
 
         <h:form>
+
             <p:button outcome="employees" value="Back to employees">
             </p:button>
-            <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
+        </h:form>
+        <p:messages id="messages_ins" closable="true" autoUpdate="true"/>
+
+        <div class="form-c">
+
+        <h:form>
+
             <h:panelGrid columns="2">
 
                 <p:outputLabel for="emplFirstName" rendered="true" value="First name: "></p:outputLabel>
@@ -46,8 +53,8 @@
             <p:commandButton action="#{employeeBean.actionInsertNew()}"
                              value="${(param['action'] != 'edit')?'Insert':'Edit'} employee">
             </p:commandButton>
-
         </h:form>
+        </div>
     </ui:define>
 </ui:composition>
 </html>

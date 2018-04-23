@@ -14,6 +14,10 @@
         <h:form id="add">
             <p:commandButton action="#{commissionBean.actionNew()}" value="Insert commision">
             </p:commandButton>
+            <p:commandButton action="#{commissionBean.filterFinished()}" value="Finished commisions" update=":list:datalist">
+            </p:commandButton>
+            <p:commandButton action="#{commissionBean.filterAll()}" value="All commisions" update=":list:datalist">
+            </p:commandButton>
         </h:form>
 
         <h:form id="list">

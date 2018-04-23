@@ -69,7 +69,9 @@ public class EmployeeBean implements Serializable {
 
     public String actionInsertNew(){
         employee.setDepartment(department);
-        employeeUtils.createCredentials(employee);
+        if(employee.getLogin() == null){
+            employeeUtils.createCredentials(employee);
+        }
 
         employeeService.merge(employee);
 
@@ -83,6 +85,12 @@ public class EmployeeBean implements Serializable {
 
     public void actionDelete(Employee employee){
         employeeService.remove(employee);
+    }
+
+    public String actionOpenEditEmployee(Employee employee){
+        this.setEmployee(employee);
+
+        return "employee_insert_edit";
     }
 
 }

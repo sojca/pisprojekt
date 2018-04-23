@@ -24,8 +24,13 @@ html, body{
     clear: both;
 }
 .nav-menu {
+    display: inline-block;
     float: left;
     margin: 15px;
+}
+
+.logged-user{
+    margin-top: 23px;
 }
 .form-center{
     display: inline-block;
@@ -34,11 +39,28 @@ html, body{
 .form-c{
     text-align: center;
 }
+.form-c form {
+    margin: 15px;
+    display: inline-block;
+}
 
 h1{
     text-align: center;
 }
 
-.ui-datatable-tablewrapper{
-    margin: 10px 5px 10px;
+.ui-datatable-tablewrapper, .ui-button{
+    margin: 8px 5px 10px;
+}
+
+.ui-datatable-tablewrapper .ui-button{
+    margin: 0px;
+}
+
+.logouted{
+    margin-top: 50px;
+    text-align: center;
+}
+#footer{
+    margin: 10px;
+    text-align: center;
 }

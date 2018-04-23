@@ -62,10 +62,6 @@ public class CommissionItemEmployeeBean extends ViewPage<CommissionItemEmployee>
         commissionItemEmployee = new CommissionItemEmployee();
     }
 
-    @PostConstruct
-    public void init(){
-    }
-
     public List<CommissionItemEmployee> getCommissionItemEmployees(){
         List<CommissionItemEmployee> ci= commissionItemEmployeeService.findCommissionItemEmployees(commissionItem);
         ci.remove(null);

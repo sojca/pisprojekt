@@ -9,6 +9,7 @@
 
 <ui:composition template="../logged_template.xhtml">
     <ui:define name="content">
+
         <h:form>
             <p:commandButton action="#{companyDetailBean.actionOpenEdit}" value="Edit customer">
                 <f:param name="action" value="edit" />
@@ -22,7 +23,7 @@
             <h:outputText value="Name:" />
             <h:outputText value="#{companyDetailBean.company.name}" />
 
-            <h:outputText value="ICO:" />
+            <h:outputText value="IČO:" />
             <h:outputText value="#{companyDetailBean.company.ico}" />
 
             <h:outputText value="Address line 1:" />
