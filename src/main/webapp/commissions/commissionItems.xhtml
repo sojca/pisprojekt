@@ -59,7 +59,15 @@
                 </p:column>
             </p:dataTable>
         </h:form>
+        <div>
         <h:outputText style="font-size:16px;" value="Total: #{commissionItemBean.sum}" id="sum"/>
+        </div>
+        <div>
+        <h:outputText style="font-size:16px;" value="Actual expenses: #{commissionItemBean.getActualSum()}" id="actual_sum"/>
+        </div>
+        <div>
+            <h:outputText style="font-size:16px;" value="Profit: #{commissionItemBean.sum - commissionItemBean.getActualSum()}" id="profit"/>
+        </div>
 
         <div class="form-c">
 

@@ -58,10 +58,13 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
     }
 
     public double getActualSum(){
-        List<CommissionItem> ci = getCommissionItems();
         double total = 0.0;
-        for (CommissionItem item : ci){
-            total+=item.getActivity().getPricePerUnit() * item.getAmount();
+        List<CommissionItem> comItems = commission.getCommissionItems();
+        for (CommissionItem ci : comItems){
+            List<CommissionItemEmployee> cie = commissionItemEmployeeService.findAllItemsByCommissionItem(ci);
+            for (CommissionItemEmployee item : cie){
+                total+=item.getRealHour()*item.getEmployee().getSalary();
+            }
         }
         return total;
     }
