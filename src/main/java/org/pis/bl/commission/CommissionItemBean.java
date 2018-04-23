@@ -57,6 +57,15 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
         return total;
     }
 
+    public double getActualSum(){
+        List<CommissionItem> ci = getCommissionItems();
+        double total = 0.0;
+        for (CommissionItem item : ci){
+            total+=item.getActivity().getPricePerUnit() * item.getAmount();
+        }
+        return total;
+    }
+
     public void setActivity(Activity activity) {
         this.activity = activity;
     }

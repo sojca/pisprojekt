@@ -14,13 +14,7 @@
         <class>org.pis.entity.Activity</class>
         <class>org.pis.entity.CommissionItemEmployee</class>
         <properties>
-            <!--<property name="eclipselink.jdbc.url" value="jdbc:postgresql://localhost:5432/test2pis_db"/>-->
-            <!--<property name="eclipselink.jdbc.driver" value="org.postgresql.Driver"/>-->
-            <!--<property name="eclipselink.jdbc.user" value="postgres"/>-->
-            <!--<property name="eclipselink.jdbc.password" value="root"/>-->
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
-            <!--<property name="eclipselink.ddl-generation.output-mode" value="database" />-->
-
         </properties>
     </persistence-unit>
 </persistence>
