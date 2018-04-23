@@ -28,7 +28,7 @@
 
             <p:dataTable value="#{commissionItemBean.commissionItems}" var="ci" sortBy="#{ci.activity.description}" id="datalist" style="text-align: center;">
                 <p:column headerText="Item">
-                    <h:outputText value="#{ci.activity.description}"/>
+                    <h:outputText value="#{ci.activity.name}"/>
                 </p:column>
                 <p:column headerText="Amount">
                     <h:outputText value="#{ci.amount}"/>
@@ -43,7 +43,7 @@
                         </p:commandButton>
                 </p:column>
                 <p:column headerText="Actual amount">
-                    <h:outputText value="---0---"/>
+                    <h:outputText value="#{commissionItemBean.getActualCosts(ci)}"/>
                 </p:column>
                 <p:column headerText="Price">
                     <h:outputText value="#{ci.amount * ci.activity.pricePerUnit}"/>
@@ -73,7 +73,7 @@
 
                 <p:outputLabel for="ciActivity" rendered="true" value="Activity: "></p:outputLabel>
                 <p:selectOneMenu id="ciActivity" converter="activityConverter" value="#{commissionItemBean.activity}">
-                    <f:selectItems value="#{commissionItemBean.activities}" var="act" itemLabel="#{act.description}"
+                    <f:selectItems value="#{commissionItemBean.activities}" var="act" itemLabel="#{act.name}"
                                    itemValue="#{act}"/>
                 </p:selectOneMenu>
 

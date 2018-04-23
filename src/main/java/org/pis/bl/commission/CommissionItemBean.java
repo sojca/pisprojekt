@@ -7,7 +7,9 @@ import org.pis.core.AuthorizationBean;
 import org.pis.entity.Activity;
 import org.pis.entity.Commission;
 import org.pis.entity.CommissionItem;
+import org.pis.entity.CommissionItemEmployee;
 import org.pis.services.ActivityService;
+import org.pis.services.CommissionItemEmployeeService;
 import org.pis.services.CommissionItemService;
 import org.pis.services.CommissionService;
 import org.primefaces.event.SelectEvent;
@@ -35,6 +37,9 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
 
     @EJB
     private CommissionItemService commissionItemService;
+
+    @EJB
+    private CommissionItemEmployeeService commissionItemEmployeeService;
 
     @Inject
     AuthorizationBean auth;
@@ -93,6 +98,16 @@ public class CommissionItemBean extends ViewPage<CommissionItem> implements Seri
         ci.remove(null);
 
         return ci;
+    }
+
+    public double getActualCosts(CommissionItem ci){
+        List<CommissionItemEmployee> cieList = commissionItemEmployeeService.findAllItemsByCommissionItem(ci);
+        double total = 0.0;
+        for (CommissionItemEmployee cie : cieList){
+            total+=cie.getRealHour() * cie.getEmployee().getSalary();
+        }
+        return total;
+
     }
 
     public boolean canUserFinishItem(CommissionItem ci){

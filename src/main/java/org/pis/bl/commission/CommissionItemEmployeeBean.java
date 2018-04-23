@@ -90,8 +90,7 @@ public class CommissionItemEmployeeBean extends ViewPage<CommissionItemEmployee>
 
     public double calculateCommissionItemExpenses(CommissionItemEmployee cie){
         double expenses = 0.0;
-        expenses += cie.getRealHour() * (cie.getCommissionItem().getActivity().getDuration() /
-                cie.getCommissionItem().getActivity().getPricePerUnit());
+        expenses += cie.getRealHour() * cie.getEmployee().getSalary();
         return expenses;
     }
 
